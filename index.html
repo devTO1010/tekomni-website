@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TekOmni Consulting - Hybrid IT & Business Strategy for Growing Companies</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #1a1a1a;
+            background-color: #fafaf7;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+
+        /* ===== TYPOGRAPHY ===== */
+        h1, h2, h3, h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            color: #5a5a5a;
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            padding: 0.875rem 1.75rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: #0d9488;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #0a7368;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(13, 148, 136, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: #d97706;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #b45309;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(217, 119, 6, 0.3);
+        }
+
+        /* ===== LAYOUT ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: #ffffff;
+            transition: box-shadow 0.3s ease;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 2rem;
+        }
+
+        .logo {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0d9488;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: #1a1a1a;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: #0d9488;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 0.35rem;
+            background: none;
+            padding: 0;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background-color: #1a1a1a;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        /* ===== HERO ===== */
+        #hero {
+            background: linear-gradient(135deg, #fafaf7 0%, #f5f0eb 100%);
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero-content h1 {
+            color: #1a1a1a;
+            margin-bottom: 1.25rem;
+            font-size: 2.75rem;
+        }
+
+        .hero-content > p {
+            font-size: 1.2rem;
+            color: #5a5a5a;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== CARDS & SECTIONS ===== */
+        .card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px);
+        }
+
+        /* ===== SERVICES SECTION ===== */
+        #services {
+            background-color: #fafaf7;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            transform: translateY(-6px);
+        }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f0fdfa, #e6f7f5);
+            border-radius: 14px;
+        }
+
+        .service-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: #0d9488;
+            stroke-width: 1.8;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .service-card h3 {
+            color: #0d9488;
+            margin-bottom: 1.5rem;
+            font-size: 1.35rem;
+        }
+
+        .service-list {
+            list-style: none;
+            text-align: left;
+        }
+
+        .service-list li {
+            padding: 0.5rem 0;
+            color: #5a5a5a;
+            font-size: 0.95rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .service-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* ===== WHY TEKOMNI SECTION ===== */
+        #why-tekomni {
+            background: linear-gradient(135deg, #f5f0eb 0%, #fafaf7 100%);
+        }
+
+        .value-props {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .value-prop {
+            text-align: center;
+        }
+
+        .value-prop-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f0fdfa, #e6f7f5);
+            border-radius: 16px;
+        }
+
+        .value-prop-icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: #0d9488;
+            stroke-width: 1.8;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .value-prop h3 {
+            color: #0d9488;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .value-prop p {
+            color: #5a5a5a;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        /* ===== CASE STUDIES SECTION ===== */
+        #case-studies {
+            background-color: #fafaf7;
+        }
+
+        .case-studies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .case-study-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+            border-top: 4px solid #0d9488;
+        }
+
+        .case-study-card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .case-study-card h3 {
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+
+        .case-study-card p {
+            color: #5a5a5a;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .case-study-metric {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0d9488;
+            margin: 1.5rem 0 0.5rem 0;
+        }
+
+        /* ===== TESTIMONIALS SECTION ===== */
+        #testimonials {
+            background: linear-gradient(135deg, #f5f0eb 0%, #fafaf7 100%);
+        }
+
+        .testimonials-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .testimonial-card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .testimonial-quote {
+            color: #1a1a1a;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            flex-grow: 1;
+        }
+
+        .testimonial-quote::before {
+            content: '"';
+            font-size: 3rem;
+            color: #0d9488;
+            opacity: 0.5;
+            line-height: 0;
+            vertical-align: -0.45em;
+            margin-right: 0.1rem;
+        }
+
+        .testimonial-author {
+            color: #0d9488;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .testimonial-title {
+            color: #5a5a5a;
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        #contact {
+            background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+            padding: 5rem 0;
+        }
+
+        #contact h2 {
+            color: white;
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+            align-items: start;
+        }
+
+        .contact-form {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #1a1a1a;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.875rem;
+            border: 2px solid #e5e5e5;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #0d9488;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            width: 100%;
+            background-color: #0d9488;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-submit:hover {
+            background-color: #0a7368;
+            transform: translateY(-2px);
+        }
+
+        .contact-info {
+            color: white;
+        }
+
+        .contact-info h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item {
+            margin-bottom: 2rem;
+        }
+
+        .contact-item-label {
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: block;
+            margin-bottom: 0.5rem;
+            opacity: 0.95;
+        }
+
+        .contact-item-value {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #0d9488;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #d97706;
+        }
+
+        /* ===== MODAL ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .modal-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            font-size: 1.5rem;
+            color: #5a5a5a;
+            transition: color 0.3s ease;
+            padding: 0;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close:hover {
+            color: #0d9488;
+        }
+
+        .modal-content h2 {
+            margin-top: 0;
+            color: #0d9488;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-content p {
+            color: #5a5a5a;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .modal-content h3 {
+            color: #1a1a1a;
+            font-size: 1.1rem;
+            margin-top: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .fade-in {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.75rem;
+            }
+
+            h3 {
+                font-size: 1.25rem;
+            }
+
+            section {
+                padding: 3rem 0;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 1.5rem;
+                gap: 1rem;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translateY(12px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translateY(-12px);
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content > p {
+                font-size: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                margin: 1rem;
+                padding: 2rem;
+            }
+
+            .services-grid,
+            .value-props,
+            .case-studies-grid,
+            .testimonials-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            section {
+                padding: 2rem 0;
+            }
+
+            nav .container {
+                padding: 1rem;
+            }
+
+            .logo {
+                font-size: 1.25rem;
+            }
+
+            .btn {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+
+            .contact-form {
+                padding: 1.5rem;
+            }
+
+            .modal-content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav id="navbar">
+        <div class="container">
+            <div class="logo">TekOmni</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#why-tekomni">Why TekOmni</a></li>
+                <li><a href="#case-studies">Case Studies</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Technology meets strategy. Your business wins.</h1>
+                <p>We're hybrid IT and business consultants who see the whole picture. For growing companies that need more than just tech support—they need a trusted partner who gets their business.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">Let's Talk</a>
+                    <a href="#services" class="btn btn-secondary">Explore Services</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services">
+        <div class="container">
+            <h2>What We Do</h2>
+            <p style="margin-bottom: 3rem; max-width: 700px;">We combine deep technical expertise with strategic business thinking. Here's what we bring to the table.</p>
+            <div class="services-grid">
+                <!-- Technology Card -->
+                <div class="service-card fade-in">
+                    <span class="service-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 8h2"/><path d="M7 11h4"/></svg></span>
+                    <h3>Technology</h3>
+                    <ul class="service-list">
+                        <li>Managed IT & Service Desk</li>
+                        <li>Cloud Solutions</li>
+                        <li>Cybersecurity & Data Protection</li>
+                        <li>IT Strategic Planning</li>
+                    </ul>
+                </div>
+
+                <!-- Data & AI Card -->
+                <div class="service-card fade-in">
+                    <span class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 2a4 4 0 0 1 4 4c0 1.5-.8 2.8-2 3.5v1l3 2.5"/><path d="M12 2a4 4 0 0 0-4 4c0 1.5.8 2.8 2 3.5v1l-3 2.5"/><circle cx="12" cy="6" r="1.5" fill="#0d9488"/><path d="M6 18h12"/><path d="M8 22h8"/><path d="M10 18v4"/><path d="M14 18v4"/></svg></span>
+                    <h3>Data & AI</h3>
+                    <ul class="service-list">
+                        <li>Data Science & Analytics</li>
+                        <li>AI Solutions & Integration</li>
+                        <li>Knowledge Management</li>
+                    </ul>
+                </div>
+
+                <!-- Business Strategy Card -->
+                <div class="service-card fade-in">
+                    <span class="service-icon"><svg viewBox="0 0 24 24"><path d="M2 12h4"/><path d="M18 12h4"/><path d="M12 2v4"/><path d="M12 18v4"/><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1" fill="#0d9488"/></svg></span>
+                    <h3>Business Strategy</h3>
+                    <ul class="service-list">
+                        <li>Business Consulting</li>
+                        <li>Fractional C-Suite Leadership</li>
+                        <li>Process Design & Improvement</li>
+                        <li>Digital Transformation</li>
+                    </ul>
+                </div>
+
+                <!-- Growth Card -->
+                <div class="service-card fade-in">
+                    <span class="service-icon"><svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></span>
+                    <h3>Growth</h3>
+                    <ul class="service-list">
+                        <li>Marketing Strategy & Execution</li>
+                        <li>Application Development</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY TEKOMNI SECTION -->
+    <section id="why-tekomni">
+        <div class="container">
+            <h2>Why TekOmni</h2>
+            <div class="value-props">
+                <div class="value-prop fade-in">
+                    <span class="value-prop-icon"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></span>
+                    <h3>We See the Whole Picture</h3>
+                    <p>Hybrid IT and business expertise means we never silo technology decisions. We understand how your systems drive your strategy.</p>
+                </div>
+                <div class="value-prop fade-in">
+                    <span class="value-prop-icon"><svg viewBox="0 0 24 24"><path d="M12 22V8"/><path d="M5 12l7-7 7 7"/><path d="M5 22h14"/></svg></span>
+                    <h3>Built for Growing Companies</h3>
+                    <p>SMBs are our focus. No enterprise overhead, no one-size-fits-all approach—just smart people who scale with you.</p>
+                </div>
+                <div class="value-prop fade-in">
+                    <span class="value-prop-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+                    <h3>Your Team, Extended</h3>
+                    <p>Fractional leadership, ongoing partnership, hands-on support. We're not vendors—we're advisors invested in your success.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CASE STUDIES SECTION -->
+    <section id="case-studies">
+        <div class="container">
+            <h2>Real Results</h2>
+            <p style="margin-bottom: 3rem; max-width: 700px;">Here's how we've helped growing companies succeed.</p>
+            <div class="case-studies-grid">
+                <div class="case-study-card fade-in">
+                    <h3>Transportation & Logistics</h3>
+                    <p>We transformed their infrastructure with a secure cloud migration, built advanced data protection systems, and introduced AI-driven bidding models that unlocked new revenue streams. The result: faster operations, stronger security, and smarter decisions.</p>
+                    <div class="case-study-metric">+20% efficiency gain</div>
+                </div>
+                <div class="case-study-card fade-in">
+                    <h3>Financial Services</h3>
+                    <p>A financial services firm needed bulletproof data protection and compliance architecture. We designed and deployed comprehensive data loss prevention systems, implemented regulatory controls, and created processes that turned security into a competitive advantage.</p>
+                    <div class="case-study-metric">100% compliance audit pass</div>
+                </div>
+                <div class="case-study-card fade-in">
+                    <h3>Enterprise Operations</h3>
+                    <p>A large enterprise needed operational restructuring. We built a knowledge-centric service desk for 50,000 users, redesigned processes for efficiency, and created systems that let their team work smarter. The impact: reduced costs and faster service delivery.</p>
+                    <div class="case-study-metric">30% cost reduction</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section id="testimonials">
+        <div class="container">
+            <h2>What Clients Say</h2>
+            <div class="testimonials-container">
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-quote">For many years, our company has relied on TekOmni to manage all of our technology needs. From day one, William has provided exceptional support with an unmatched ability to resolve issues quickly. Beyond technical expertise, they've offered valuable guidance in business organization, helping us operate more efficiently. They're an indispensable partner.</div>
+                    <div class="testimonial-author">Gabriel M.</div>
+                    <div class="testimonial-title">Logistics President, BLF Transportation LLC</div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-quote">William is highly competent and has been crucial to our operations. He monitors and optimizes performance, stays on top of developments, and delivers impressive results—not to mention cost savings. His courteous, calm approach to problem solving combined with expertise has been critical to our success. I'd recommend him to any organization.</div>
+                    <div class="testimonial-author">Glenda H.</div>
+                    <div class="testimonial-title">Senior Accountant, Copper Line Electric LLC</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+        <div class="container">
+            <h2>Let's Work Together</h2>
+            <div class="contact-wrapper">
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name / Company</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone (optional)</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">How can we help?</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">Send Message</button>
+                </form>
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <div class="contact-item">
+                        <div class="contact-item-label">Email</div>
+                        <div class="contact-item-value"><a href="mailto:TellMeMore@TekOmni.com">TellMeMore@TekOmni.com</a></div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-label">Phone</div>
+                        <div class="contact-item-value"><a href="tel:+15022308224">(502) 230-8224</a></div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-label">Location</div>
+                        <div class="contact-item-value">Louisville, Kentucky, USA</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 TekOmni Consulting LLC. All rights reserved. | <a href="privacy.html">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // ===== NAVIGATION & HAMBURGER =====
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        const navbar = document.getElementById('navbar');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Add shadow on scroll
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 0) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // ===== INTERSECTION OBSERVER FOR FADE-IN ANIMATIONS =====
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const delay = Array.from(entry.target.parentElement.children).indexOf(entry.target);
+                    entry.target.style.animationDelay = `${delay * 0.1}s`;
+                    entry.target.style.opacity = '1';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // ===== FORM HANDLING =====
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+
+            // Basic validation
+            if (!name || !email || !message) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            // Create mailto link with pre-filled data
+            const subject = `New Inquiry from ${name}`;
+            const body = `Name/Company: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`;
+            const mailtoLink = `mailto:TellMeMore@TekOmni.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+            // Open mailto link
+            window.location.href = mailtoLink;
+
+            // Optional: Show success message
+            alert('Thank you! Your message will be sent via your email client.');
+            contactForm.reset();
+        });
+
+        // Privacy link now goes to privacy.html subpage
+    </script>
+</body>
+</html>
