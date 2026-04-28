@@ -1,1080 +1,1014 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TekOmni Consulting - Hybrid IT & Business Strategy for Growing Companies</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <style>
-        /* ===== RESET & BASE ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            color: #1a1a1a;
-            background-color: #fafaf7;
-            line-height: 1.6;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        button {
-            cursor: pointer;
-            border: none;
-            font-family: inherit;
-        }
-
-        /* ===== TYPOGRAPHY ===== */
-        h1, h2, h3, h4 {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 600;
-            line-height: 1.3;
-        }
-
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        h2 {
-            font-size: 2.25rem;
-            margin-bottom: 1.5rem;
-        }
-
-        h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        p {
-            color: #5a5a5a;
-            margin-bottom: 1rem;
-            font-size: 1.05rem;
-        }
-
-        /* ===== BUTTONS ===== */
-        .btn {
-            padding: 0.875rem 1.75rem;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            display: inline-block;
-            text-align: center;
-        }
-
-        .btn-primary {
-            background-color: #0d9488;
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background-color: #0a7368;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(13, 148, 136, 0.3);
-        }
-
-        .btn-secondary {
-            background-color: #d97706;
-            color: white;
-        }
-
-        .btn-secondary:hover {
-            background-color: #b45309;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(217, 119, 6, 0.3);
-        }
-
-        /* ===== LAYOUT ===== */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        section {
-            padding: 5rem 0;
-        }
-
-        /* ===== NAVIGATION ===== */
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background-color: #ffffff;
-            transition: box-shadow 0.3s ease;
-        }
-
-        nav.scrolled {
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-        }
-
-        nav .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.25rem 2rem;
-        }
-
-        .logo {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #0d9488;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            font-weight: 500;
-            color: #1a1a1a;
-            transition: color 0.3s ease;
-            font-size: 0.95rem;
-        }
-
-        .nav-links a:hover {
-            color: #0d9488;
-        }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 0.35rem;
-            background: none;
-            padding: 0;
-        }
-
-        .hamburger span {
-            width: 24px;
-            height: 2px;
-            background-color: #1a1a1a;
-            transition: all 0.3s ease;
-            border-radius: 2px;
-        }
-
-        /* ===== HERO ===== */
-        #hero {
-            background: linear-gradient(135deg, #fafaf7 0%, #f5f0eb 100%);
-            padding: 6rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-content {
-            max-width: 700px;
-            animation: fadeInUp 0.8s ease;
-        }
-
-        .hero-content h1 {
-            color: #1a1a1a;
-            margin-bottom: 1.25rem;
-            font-size: 2.75rem;
-        }
-
-        .hero-content > p {
-            font-size: 1.2rem;
-            color: #5a5a5a;
-            margin-bottom: 2rem;
-            line-height: 1.7;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* ===== CARDS & SECTIONS ===== */
-        .card {
-            background: #ffffff;
-            border-radius: 16px;
-            padding: 2rem;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-            transition: all 0.3s ease;
-        }
-
-        .card:hover {
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-            transform: translateY(-4px);
-        }
-
-        /* ===== SERVICES SECTION ===== */
-        #services {
-            background-color: #fafaf7;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .service-card {
-            background: #ffffff;
-            border-radius: 16px;
-            padding: 2.5rem 2rem;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        .service-card:hover {
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-            transform: translateY(-6px);
-        }
-
-        .service-icon {
-            width: 56px;
-            height: 56px;
-            margin: 0 auto 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #f0fdfa, #e6f7f5);
-            border-radius: 14px;
-        }
-
-        .service-icon svg {
-            width: 28px;
-            height: 28px;
-            stroke: #0d9488;
-            stroke-width: 1.8;
-            fill: none;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
-        .service-card h3 {
-            color: #0d9488;
-            margin-bottom: 1.5rem;
-            font-size: 1.35rem;
-        }
-
-        .service-list {
-            list-style: none;
-            text-align: left;
-        }
-
-        .service-list li {
-            padding: 0.5rem 0;
-            color: #5a5a5a;
-            font-size: 0.95rem;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .service-list li:last-child {
-            border-bottom: none;
-        }
-
-        /* ===== WHY TEKOMNI SECTION ===== */
-        #why-tekomni {
-            background: linear-gradient(135deg, #f5f0eb 0%, #fafaf7 100%);
-        }
-
-        .value-props {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3rem;
-        }
-
-        .value-prop {
-            text-align: center;
-        }
-
-        .value-prop-icon {
-            width: 64px;
-            height: 64px;
-            margin: 0 auto 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #f0fdfa, #e6f7f5);
-            border-radius: 16px;
-        }
-
-        .value-prop-icon svg {
-            width: 32px;
-            height: 32px;
-            stroke: #0d9488;
-            stroke-width: 1.8;
-            fill: none;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
-        .value-prop h3 {
-            color: #0d9488;
-            margin-bottom: 1rem;
-            font-size: 1.25rem;
-        }
-
-        .value-prop p {
-            color: #5a5a5a;
-            max-width: 300px;
-            margin: 0 auto;
-        }
-
-        /* ===== CASE STUDIES SECTION ===== */
-        #case-studies {
-            background-color: #fafaf7;
-        }
-
-        .case-studies-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .case-study-card {
-            background: #ffffff;
-            border-radius: 16px;
-            padding: 2.5rem;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-            transition: all 0.3s ease;
-            border-top: 4px solid #0d9488;
-        }
-
-        .case-study-card:hover {
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-            transform: translateY(-4px);
-        }
-
-        .case-study-card h3 {
-            color: #1a1a1a;
-            margin-bottom: 1rem;
-        }
-
-        .case-study-card p {
-            color: #5a5a5a;
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-
-        .case-study-metric {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #0d9488;
-            margin: 1.5rem 0 0.5rem 0;
-        }
-
-        /* ===== TESTIMONIALS SECTION ===== */
-        #testimonials {
-            background: linear-gradient(135deg, #f5f0eb 0%, #fafaf7 100%);
-        }
-
-        .testimonials-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .testimonial-card {
-            background: #ffffff;
-            border-radius: 16px;
-            padding: 2.5rem;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .testimonial-card:hover {
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-            transform: translateY(-4px);
-        }
-
-        .testimonial-quote {
-            color: #1a1a1a;
-            font-size: 1.05rem;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            font-style: italic;
-            flex-grow: 1;
-        }
-
-        .testimonial-quote::before {
-            content: '"';
-            font-size: 3rem;
-            color: #0d9488;
-            opacity: 0.5;
-            line-height: 0;
-            vertical-align: -0.45em;
-            margin-right: 0.1rem;
-        }
-
-        .testimonial-author {
-            color: #0d9488;
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-
-        .testimonial-title {
-            color: #5a5a5a;
-            font-size: 0.9rem;
-            margin-top: 0.25rem;
-        }
-
-        /* ===== CONTACT SECTION ===== */
-        #contact {
-            background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
-            padding: 5rem 0;
-        }
-
-        #contact h2 {
-            color: white;
-        }
-
-        .contact-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-top: 3rem;
-            align-items: start;
-        }
-
-        .contact-form {
-            background: white;
-            border-radius: 16px;
-            padding: 2.5rem;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: #1a1a1a;
-            font-size: 0.95rem;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.875rem;
-            border: 2px solid #e5e5e5;
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #0d9488;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .form-submit {
-            width: 100%;
-            background-color: #0d9488;
-            color: white;
-            padding: 1rem;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .form-submit:hover {
-            background-color: #0a7368;
-            transform: translateY(-2px);
-        }
-
-        .contact-info {
-            color: white;
-        }
-
-        .contact-info h3 {
-            color: white;
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-item {
-            margin-bottom: 2rem;
-        }
-
-        .contact-item-label {
-            font-weight: 600;
-            font-size: 0.95rem;
-            display: block;
-            margin-bottom: 0.5rem;
-            opacity: 0.95;
-        }
-
-        .contact-item-value {
-            font-size: 1.1rem;
-            opacity: 0.95;
-        }
-
-        /* ===== FOOTER ===== */
-        footer {
-            background-color: #1a1a1a;
-            color: white;
-            padding: 2rem;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-
-        footer a {
-            color: #0d9488;
-            transition: color 0.3s ease;
-        }
-
-        footer a:hover {
-            color: #d97706;
-        }
-
-        /* ===== MODAL ===== */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            animation: fadeIn 0.3s ease;
-        }
-
-        .modal.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        .modal-content {
-            background: white;
-            padding: 3rem;
-            border-radius: 16px;
-            max-width: 600px;
-            max-height: 80vh;
-            overflow-y: auto;
-            position: relative;
-            animation: slideIn 0.3s ease;
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            background: none;
-            font-size: 1.5rem;
-            color: #5a5a5a;
-            transition: color 0.3s ease;
-            padding: 0;
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-close:hover {
-            color: #0d9488;
-        }
-
-        .modal-content h2 {
-            margin-top: 0;
-            color: #0d9488;
-            margin-bottom: 1.5rem;
-        }
-
-        .modal-content p {
-            color: #5a5a5a;
-            margin-bottom: 1rem;
-            line-height: 1.8;
-        }
-
-        .modal-content h3 {
-            color: #1a1a1a;
-            font-size: 1.1rem;
-            margin-top: 2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* ===== ANIMATIONS ===== */
-        .fade-in {
-            opacity: 0;
-            animation: fadeInUp 0.6s ease forwards;
-        }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-
-            h2 {
-                font-size: 1.75rem;
-            }
-
-            h3 {
-                font-size: 1.25rem;
-            }
-
-            section {
-                padding: 3rem 0;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .nav-links.active {
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                top: 60px;
-                left: 0;
-                right: 0;
-                background: white;
-                padding: 1.5rem;
-                gap: 1rem;
-                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-            .hamburger.active span:nth-child(1) {
-                transform: rotate(45deg) translateY(12px);
-            }
-
-            .hamburger.active span:nth-child(2) {
-                opacity: 0;
-            }
-
-            .hamburger.active span:nth-child(3) {
-                transform: rotate(-45deg) translateY(-12px);
-            }
-
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-
-            .hero-content > p {
-                font-size: 1rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-            }
-
-            .hero-buttons .btn {
-                width: 100%;
-                text-align: center;
-            }
-
-            .contact-wrapper {
-                grid-template-columns: 1fr;
-            }
-
-            .modal-content {
-                margin: 1rem;
-                padding: 2rem;
-            }
-
-            .services-grid,
-            .value-props,
-            .case-studies-grid,
-            .testimonials-container {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 1rem;
-            }
-
-            h1 {
-                font-size: 1.5rem;
-            }
-
-            h2 {
-                font-size: 1.5rem;
-            }
-
-            section {
-                padding: 2rem 0;
-            }
-
-            nav .container {
-                padding: 1rem;
-            }
-
-            .logo {
-                font-size: 1.25rem;
-            }
-
-            .btn {
-                padding: 0.75rem 1.5rem;
-                font-size: 0.9rem;
-            }
-
-            .card {
-                padding: 1.5rem;
-            }
-
-            .contact-form {
-                padding: 1.5rem;
-            }
-
-            .modal-content {
-                padding: 1.5rem;
-            }
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TekOmni — Operations, Automation &amp; Process Improvement for SMBs</title>
+<meta name="description" content="I'm an operations expert who rebuilds the parts of your business that are eating your week. Custom automation designed around your actual workflow — so the evenings and weekends come back. Louisville, KY. Works nationally." />
+<meta name="author" content="William Pimentel · TekOmni LLC" />
+<meta property="og:title" content="TekOmni — Smooth Operations. More Time for Life." />
+<meta property="og:description" content="Operations expert. Custom automation that takes the operation off your plate — so the evenings and weekends come back." />
+<meta property="og:url" content="https://tekomni.com" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="TekOmni LLC" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="TekOmni — Smooth Operations. More Time for Life." />
+<meta name="twitter:description" content="Operations expert. Custom automation that takes the operation off your plate." />
+<link rel="canonical" href="https://tekomni.com" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --teal: #0d9488;
+    --teal-dark: #0f766e;
+    --orange: #d97706;
+    --orange-dark: #b45309;
+    --bg: #fafaf7;
+    --bg-warm: #f5f0eb;
+    --ink: #0a0a0a;
+    --ink-soft: #1a1a1a;
+    --muted: #525252;
+    --muted-soft: #6b7280;
+    --line: #e5e5e5;
+    --line-soft: #f3f4f6;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--ink-soft);
+    background: var(--bg);
+    line-height: 1.6;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  /* ===== NAV ===== */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #fff;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  nav .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--teal);
+  }
+  .logo .accent { color: var(--orange); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-weight: 500;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+  }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-cta {
+    background: var(--ink);
+    color: #fff !important;
+    padding: 0.55rem 1.1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background 0.2s ease;
+  }
+  .nav-cta:hover { background: var(--teal); }
+
+  /* ===== HERO ===== */
+  #hero {
+    background: linear-gradient(135deg, var(--bg) 0%, var(--bg-warm) 100%);
+    padding: 6rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+  #hero::before {
+    content: "";
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(13,148,136,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  #hero .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 820px;
+    margin: 0 auto;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--teal);
+    background: rgba(13,148,136,0.1);
+    padding: 0.4rem 0.85rem;
+    border-radius: 999px;
+    margin-bottom: 1.5rem;
+  }
+  .hero-eyebrow::before {
+    content: "";
+    display: inline-block;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--orange);
+  }
+  .hero-copy h1 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 3.8rem;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin-bottom: 1.75rem;
+  }
+  .hero-copy h1 .accent { color: var(--teal); }
+  .hero-subhead {
+    font-size: 1.22rem;
+    color: var(--muted);
+    line-height: 1.65;
+    max-width: 42rem;
+    margin: 0 auto 2.25rem;
+  }
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2.75rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.95rem 1.7rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.25s ease;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary {
+    background: var(--teal);
+    color: #fff;
+  }
+  .btn-primary:hover {
+    background: var(--teal-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(13,148,136,0.25);
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    border: 1.5px solid var(--ink);
+  }
+  .btn-ghost:hover {
+    background: var(--ink);
+    color: #fff;
+  }
+  .hero-meta {
+    margin-top: 0.5rem;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: 0.02em;
+  }
+  .hero-meta strong { color: var(--ink); font-weight: 700; }
+
+  /* ===== VALUE PROPS SECTION ===== */
+  .value-section {
+    background: #fff;
+    padding: 6rem 0 5rem;
+    border-top: 1px solid var(--line-soft);
+  }
+  .value-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  .value-section-head {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 3.5rem;
+  }
+  .value-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--orange);
+    background: rgba(217,119,6,0.1);
+    padding: 0.4rem 0.85rem;
+    border-radius: 999px;
+    margin-bottom: 1.25rem;
+  }
+  .value-section h2 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 2.4rem;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+  .value-section .lead {
+    font-size: 1.1rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .value-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .value-card {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 2rem;
+    position: relative;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .value-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px -12px rgba(13,148,136,0.18);
+    border-color: var(--teal);
+  }
+  .value-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 2rem;
+    width: 2.5rem; height: 3px;
+    background: var(--teal);
+    border-radius: 0 0 2px 2px;
+  }
+  .value-card.card-2::before { background: var(--orange); }
+  .value-card-num {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--orange);
+    margin-bottom: 0.85rem;
+  }
+  .value-card-num span {
+    color: var(--ink);
+    margin-left: 0.5rem;
+  }
+  .value-card-headline {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 1.55rem;
+    line-height: 1.15;
+    color: var(--ink);
+    letter-spacing: -0.025em;
+    margin-bottom: 1rem;
+  }
+  .value-card-body {
+    font-size: 0.97rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+  }
+  .value-pills {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--line);
+  }
+  .value-pill {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    line-height: 1.45;
+  }
+  .value-pill::before {
+    content: "";
+    width: 16px; height: 16px;
+    flex-shrink: 0;
+    background-color: var(--teal);
+    -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M13.5 4.5l-7 7-3-3' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/></svg>") no-repeat center / contain;
+    mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M13.5 4.5l-7 7-3-3' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/></svg>") no-repeat center / contain;
+    margin-top: 3px;
+  }
+  .value-pill strong {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  /* ===== Below-fold teaser ===== */
+  .below-teaser {
+    background: var(--ink);
+    color: #fff;
+    padding: 3rem 0;
+  }
+  .below-teaser .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .below-teaser .pull {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 2rem;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .below-teaser .pull .accent { color: var(--orange); }
+  .below-teaser .sub {
+    font-size: 0.95rem;
+    color: #d4d4d4;
+    max-width: 32rem;
+  }
+  .below-teaser .cta-link {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--orange);
+    border-bottom: 2px solid var(--orange);
+    padding-bottom: 2px;
+    transition: color 0.2s ease;
+  }
+  .below-teaser .cta-link:hover { color: #fff; border-color: #fff; }
+
+  /* ===== HOW I WORK (the loop) ===== */
+  .how-section {
+    background: #fff;
+    padding: 6rem 0 5rem;
+  }
+  .how-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  .loop-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    margin-top: 3rem;
+  }
+  .loop-step {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 1.75rem;
+    position: relative;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+  .loop-step:hover {
+    transform: translateY(-3px);
+    border-color: var(--teal);
+  }
+  .loop-step-num {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: var(--orange);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 0.85rem;
+  }
+  .loop-step-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.65rem;
+  }
+  .loop-step-body {
+    font-size: 0.92rem;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+  .loop-tagline {
+    margin-top: 3rem;
+    text-align: center;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--ink);
+    font-style: italic;
+    line-height: 1.5;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .loop-tagline .accent { color: var(--teal); font-style: normal; }
+
+  /* ===== SERVICES ===== */
+  .services-section {
+    background: var(--bg);
+    padding: 6rem 0;
+    border-top: 1px solid var(--line-soft);
+  }
+  .services-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-top: 3rem;
+  }
+  .service-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .service-item:hover {
+    transform: translateY(-2px);
+    border-color: var(--teal);
+  }
+  .service-num {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: var(--teal);
+    background: rgba(13,148,136,0.1);
+    padding: 0.45rem 0.65rem;
+    border-radius: 6px;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  .service-name {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.015em;
+    margin-bottom: 0.4rem;
+  }
+  .service-desc {
+    font-size: 0.92rem;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  /* ===== CONTACT ===== */
+  .contact-section {
+    background: linear-gradient(135deg, var(--ink) 0%, #1a3a36 100%);
+    color: #fff;
+    padding: 7rem 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-section::before {
+    content: "";
+    position: absolute;
+    top: -150px; left: -150px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(13,148,136,0.25) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .contact-section::after {
+    content: "";
+    position: absolute;
+    bottom: -200px; right: -100px;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(217,119,6,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .contact-section .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 2;
+  }
+  /* Cal.com embed card — light surface inside the dark contact section */
+  .cal-embed-card {
+    background: #fff;
+    border-radius: 18px;
+    padding: 1rem;
+    margin: 2.5rem auto;
+    max-width: 920px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.06);
+    overflow: hidden;
+  }
+  #my-cal-inline {
+    width: 100%;
+    min-height: 640px;
+  }
+  .cal-fallback {
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    color: #a3a3a3;
+    text-align: center;
+  }
+  .cal-fallback a {
+    color: var(--orange);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+  }
+  .cal-fallback a:hover { border-bottom-color: var(--orange); }
+  .contact-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--orange);
+    background: rgba(217,119,6,0.18);
+    padding: 0.45rem 0.95rem;
+    border-radius: 999px;
+    margin-bottom: 1.5rem;
+  }
+  .contact-section h2 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 3rem;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    margin-bottom: 1.25rem;
+    color: #fff;
+  }
+  .contact-section h2 .accent { color: var(--orange); }
+  .contact-lead {
+    font-size: 1.18rem;
+    color: #d4d4d4;
+    max-width: 38rem;
+    margin: 0 auto 2.5rem;
+    line-height: 1.6;
+  }
+  .contact-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--teal);
+    color: #fff;
+    padding: 1.15rem 2.5rem;
+    border-radius: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 2.5rem;
+    transition: all 0.25s ease;
+    border: none;
+    cursor: pointer;
+  }
+  .contact-cta:hover {
+    background: #14b8a6;
+    transform: translateY(-3px);
+    box-shadow: 0 16px 36px rgba(13,148,136,0.4);
+  }
+  .contact-meta {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.92rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .contact-meta-item {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  .contact-meta-item .label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #737373;
+    font-weight: 700;
+  }
+  .contact-meta-item .value {
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  .contact-meta-item a {
+    color: #fff;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+  .contact-meta-item a:hover {
+    color: var(--orange);
+    border-bottom-color: var(--orange);
+  }
+
+  /* ===== FOOTER ===== */
+  .site-footer {
+    background: #050505;
+    color: #737373;
+    padding: 2.5rem 0;
+    font-size: 0.85rem;
+  }
+  .site-footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .footer-left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .footer-logo {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    color: #fff;
+    font-size: 1rem;
+    letter-spacing: -0.015em;
+  }
+  .footer-logo .accent { color: var(--orange); }
+  .footer-tag {
+    font-size: 0.78rem;
+    color: #737373;
+  }
+  .footer-right {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    font-size: 0.82rem;
+    color: #737373;
+  }
+  .footer-right a {
+    color: #a3a3a3;
+    transition: color 0.2s ease;
+  }
+  .footer-right a:hover { color: var(--teal); }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 900px) {
+    .hero-copy h1 { font-size: 2.4rem; }
+    .nav-links { display: none; }
+    .below-teaser .container { flex-direction: column; align-items: flex-start; }
+    .value-grid { grid-template-columns: 1fr; }
+    .value-section h2 { font-size: 1.9rem; }
+    .loop-grid { grid-template-columns: repeat(2, 1fr); }
+    .services-grid { grid-template-columns: 1fr; }
+    .contact-section h2 { font-size: 2.2rem; }
+    .contact-meta { flex-direction: column; gap: 1.5rem; }
+    .site-footer .container { flex-direction: column; text-align: center; }
+  }
+  @media (max-width: 600px) {
+    .loop-grid { grid-template-columns: 1fr; }
+  }
+</style>
 </head>
 <body>
-    <!-- NAVIGATION -->
-    <nav id="navbar">
-        <div class="container">
-            <div class="logo">TekOmni</div>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#why-tekomni">Why TekOmni</a></li>
-                <li><a href="#case-studies">Case Studies</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <button class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+
+<!-- NAV -->
+<nav>
+  <div class="container">
+    <div class="logo">Tek<span class="accent">Omni</span></div>
+    <ul class="nav-links">
+      <li><a href="#work">Case Studies</a></li>
+      <li><a href="#how-i-work">How I Work</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact" class="nav-cta">Book a call</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-grid">
+
+      <div class="hero-copy">
+        <div class="hero-eyebrow">Operations &middot; Automation &middot; Process Improvement</div>
+        <h1>Smooth Operations. More Time for <span class="accent">Life</span>.</h1>
+        <p class="hero-subhead">
+          I&rsquo;m an operations expert who rebuilds the parts of your business that are eating your week. Custom automation, designed around your actual workflow &mdash; so the evenings and weekends you&rsquo;ve been losing go back to <strong>family, friends, hobbies, travel,</strong> and everything you built this business to fund.
+        </p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn btn-primary">Book a 30-min call &rarr;</a>
+          <a href="#work" class="btn btn-ghost">See the work</a>
         </div>
-    </nav>
-
-    <!-- HERO SECTION -->
-    <section id="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Technology meets strategy. Your business wins.</h1>
-                <p>We're hybrid IT and business consultants who see the whole picture. For growing companies that need more than just tech support—they need a trusted partner who gets their business.</p>
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary">Let's Talk</a>
-                    <a href="#services" class="btn btn-secondary">Explore Services</a>
-                </div>
-            </div>
+        <div class="hero-meta">
+          Built for SMB owners who&rsquo;d rather not spend the next decade running the operation by hand.
         </div>
-    </section>
+      </div>
 
-    <!-- SERVICES SECTION -->
-    <section id="services">
-        <div class="container">
-            <h2>What We Do</h2>
-            <p style="margin-bottom: 3rem; max-width: 700px;">We combine deep technical expertise with strategic business thinking. Here's what we bring to the table.</p>
-            <div class="services-grid">
-                <!-- Technology Card -->
-                <div class="service-card fade-in">
-                    <span class="service-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 8h2"/><path d="M7 11h4"/></svg></span>
-                    <h3>Technology</h3>
-                    <ul class="service-list">
-                        <li>Managed IT & Service Desk</li>
-                        <li>Cloud Solutions</li>
-                        <li>Cybersecurity & Data Protection</li>
-                        <li>IT Strategic Planning</li>
-                    </ul>
-                </div>
+    </div>
+  </div>
+</section>
 
-                <!-- Data & AI Card -->
-                <div class="service-card fade-in">
-                    <span class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 2a4 4 0 0 1 4 4c0 1.5-.8 2.8-2 3.5v1l3 2.5"/><path d="M12 2a4 4 0 0 0-4 4c0 1.5.8 2.8 2 3.5v1l-3 2.5"/><circle cx="12" cy="6" r="1.5" fill="#0d9488"/><path d="M6 18h12"/><path d="M8 22h8"/><path d="M10 18v4"/><path d="M14 18v4"/></svg></span>
-                    <h3>Data & AI</h3>
-                    <ul class="service-list">
-                        <li>Data Science & Analytics</li>
-                        <li>AI Solutions & Integration</li>
-                        <li>Knowledge Management</li>
-                    </ul>
-                </div>
+<!-- VALUE PROPS — three problems, three production systems, three SMBs got their time back -->
+<section class="value-section" id="work">
+  <div class="container">
+    <div class="value-section-head">
+      <div class="value-eyebrow">Three rebuilds. Three SMBs. Time recovered.</div>
+      <h2>I find the drain. I build the fix.</h2>
+      <p class="lead">Three SMBs hit common operational friction. Three custom rebuilds shipped and running. Here&rsquo;s what each one was draining, what got built, and what came back to the owner.</p>
+    </div>
 
-                <!-- Business Strategy Card -->
-                <div class="service-card fade-in">
-                    <span class="service-icon"><svg viewBox="0 0 24 24"><path d="M2 12h4"/><path d="M18 12h4"/><path d="M12 2v4"/><path d="M12 18v4"/><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1" fill="#0d9488"/></svg></span>
-                    <h3>Business Strategy</h3>
-                    <ul class="service-list">
-                        <li>Business Consulting</li>
-                        <li>Fractional C-Suite Leadership</li>
-                        <li>Process Design & Improvement</li>
-                        <li>Digital Transformation</li>
-                    </ul>
-                </div>
+    <div class="value-grid">
 
-                <!-- Growth Card -->
-                <div class="service-card fade-in">
-                    <span class="service-icon"><svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></span>
-                    <h3>Growth</h3>
-                    <ul class="service-list">
-                        <li>Marketing Strategy & Execution</li>
-                        <li>Application Development</li>
-                    </ul>
-                </div>
-            </div>
+      <!-- Case Study 1: Trucking dispatch rebuild -->
+      <div class="value-card card-1">
+        <div class="value-card-num">01 <span>Regional trucking fleet</span></div>
+        <div class="value-card-headline">Dispatch was the bottleneck. Now it isn&rsquo;t.</div>
+        <p class="value-card-body">
+          Every load assignment, every reroute, every HOS check ran through one human. Late pickups and compliance violations were caught after the fact &mdash; sometimes at 2 a.m. <strong>I rebuilt the dispatch flow</strong> around an AI assignment engine that weighs hours-of-service, equipment, weather, and customer windows on every load, and surfaces exceptions before they escalate.
+        </p>
+        <div class="value-pills">
+          <div class="value-pill"><span><strong>Routing decisions: hours &rarr; minutes</strong></span></div>
+          <div class="value-pill"><span><strong>2 a.m. exception calls: eliminated</strong></span></div>
+          <div class="value-pill"><span><strong>Compliance violations caught before they happen</strong> &mdash; not after</span></div>
         </div>
-    </section>
+      </div>
 
-    <!-- WHY TEKOMNI SECTION -->
-    <section id="why-tekomni">
-        <div class="container">
-            <h2>Why TekOmni</h2>
-            <div class="value-props">
-                <div class="value-prop fade-in">
-                    <span class="value-prop-icon"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></span>
-                    <h3>We See the Whole Picture</h3>
-                    <p>Hybrid IT and business expertise means we never silo technology decisions. We understand how your systems drive your strategy.</p>
-                </div>
-                <div class="value-prop fade-in">
-                    <span class="value-prop-icon"><svg viewBox="0 0 24 24"><path d="M12 22V8"/><path d="M5 12l7-7 7 7"/><path d="M5 22h14"/></svg></span>
-                    <h3>Built for Growing Companies</h3>
-                    <p>SMBs are our focus. No enterprise overhead, no one-size-fits-all approach—just smart people who scale with you.</p>
-                </div>
-                <div class="value-prop fade-in">
-                    <span class="value-prop-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
-                    <h3>Your Team, Extended</h3>
-                    <p>Fractional leadership, ongoing partnership, hands-on support. We're not vendors—we're advisors invested in your success.</p>
-                </div>
-            </div>
+      <!-- Case Study 2: Electrical contractor estimating rebuild -->
+      <div class="value-card card-2">
+        <div class="value-card-num">02 <span>Commercial electrical contractor</span></div>
+        <div class="value-card-headline">Estimates ate Sundays. Now they don&rsquo;t.</div>
+        <p class="value-card-body">
+          Walking the site by day was fast. The write-up at night was what killed evenings &mdash; copy-pasting catalog SKUs, reconciling labor against role rates, formatting quotes. Customers waited days for proposals. <strong>I built a voice-first estimating system:</strong> dictate the scope on-site, the system matches the QuickBooks catalog and labor rates, the priced PDF lands in the customer&rsquo;s inbox before you&rsquo;re back in the truck.
+        </p>
+        <div class="value-pills">
+          <div class="value-pill"><span><strong>Quote turnaround: hours, not days</strong></span></div>
+          <div class="value-pill"><span><strong>Sundays reclaimed</strong></span></div>
+          <div class="value-pill"><span><strong>Higher close rate</strong> &mdash; speed wins deals while scope is fresh</span></div>
         </div>
-    </section>
+      </div>
 
-    <!-- CASE STUDIES SECTION -->
-    <section id="case-studies">
-        <div class="container">
-            <h2>Real Results</h2>
-            <p style="margin-bottom: 3rem; max-width: 700px;">Here's how we've helped growing companies succeed.</p>
-            <div class="case-studies-grid">
-                <div class="case-study-card fade-in">
-                    <h3>Transportation & Logistics</h3>
-                    <p>We transformed their infrastructure with a secure cloud migration, built advanced data protection systems, and introduced AI-driven bidding models that unlocked new revenue streams. The result: faster operations, stronger security, and smarter decisions.</p>
-                    <div class="case-study-metric">+20% efficiency gain</div>
-                </div>
-                <div class="case-study-card fade-in">
-                    <h3>Financial Services</h3>
-                    <p>A financial services firm needed bulletproof data protection and compliance architecture. We designed and deployed comprehensive data loss prevention systems, implemented regulatory controls, and created processes that turned security into a competitive advantage.</p>
-                    <div class="case-study-metric">100% compliance audit pass</div>
-                </div>
-                <div class="case-study-card fade-in">
-                    <h3>Enterprise Operations</h3>
-                    <p>A large enterprise needed operational restructuring. We built a knowledge-centric service desk for 50,000 users, redesigned processes for efficiency, and created systems that let their team work smarter. The impact: reduced costs and faster service delivery.</p>
-                    <div class="case-study-metric">30% cost reduction</div>
-                </div>
-            </div>
+      <!-- Case Study 3: SMB outbound rebuild -->
+      <div class="value-card card-3">
+        <div class="value-card-num">03 <span>SMB marketing operations</span></div>
+        <div class="value-card-headline">Marketing was always &ldquo;next week.&rdquo; Now it just runs.</div>
+        <p class="value-card-body">
+          The owner knew weekly posting mattered &mdash; for hires, for buyers, for staying top-of-mind. But doing it meant becoming a part-time copywriter, designer, and scheduler. The agency alternative was $2&ndash;5k/mo for generic posts. <strong>I built a publishing system</strong> that learns the brand voice once, generates platform-specific content on a schedule, and asks for nothing more than a five-minute weekly approval.
+        </p>
+        <div class="value-pills">
+          <div class="value-pill"><span><strong>5 minutes a week</strong> instead of three hours</span></div>
+          <div class="value-pill"><span><strong>$2&ndash;5k/mo agency invoice eliminated</strong> &mdash; without losing brand voice</span></div>
+          <div class="value-pill"><span><strong>Channels stay live</strong> &mdash; no more &ldquo;I&rsquo;ll get to it next week&rdquo;</span></div>
         </div>
-    </section>
+      </div>
 
-    <!-- TESTIMONIALS SECTION -->
-    <section id="testimonials">
-        <div class="container">
-            <h2>What Clients Say</h2>
-            <div class="testimonials-container">
-                <div class="testimonial-card fade-in">
-                    <div class="testimonial-quote">For many years, our company has relied on TekOmni to manage all of our technology needs. From day one, William has provided exceptional support with an unmatched ability to resolve issues quickly. Beyond technical expertise, they've offered valuable guidance in business organization, helping us operate more efficiently. They're an indispensable partner.</div>
-                    <div class="testimonial-author">Gabriel M.</div>
-                    <div class="testimonial-title">Logistics President, BLF Transportation LLC</div>
-                </div>
-                <div class="testimonial-card fade-in">
-                    <div class="testimonial-quote">William is highly competent and has been crucial to our operations. He monitors and optimizes performance, stays on top of developments, and delivers impressive results—not to mention cost savings. His courteous, calm approach to problem solving combined with expertise has been critical to our success. I'd recommend him to any organization.</div>
-                    <div class="testimonial-author">Glenda H.</div>
-                    <div class="testimonial-title">Senior Accountant, Copper Line Electric LLC</div>
-                </div>
-            </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSITION BAND -->
+<section class="below-teaser">
+  <div class="container">
+    <div>
+      <div class="pull">Take back <span class="accent">your time</span></div>
+      <div class="sub">Hours reclaimed. Evenings handed back. Weeks freed from the operation. That&rsquo;s the only ROI that matters.</div>
+    </div>
+    <a href="#how-i-work" class="cta-link">See how I work &rarr;</a>
+  </div>
+</section>
+
+<!-- HOW I WORK — the loop -->
+<section class="how-section" id="how-i-work">
+  <div class="container">
+    <div class="value-section-head">
+      <div class="value-eyebrow">How I work</div>
+      <h2>Discover &rarr; Build &rarr; Operate &rarr; Improve.</h2>
+      <p class="lead">A continuous loop, not a project handoff. Most automation projects die because the consultant ships the system and disappears. I run it after launch &mdash; so it gets better while you sleep.</p>
+    </div>
+
+    <div class="loop-grid">
+      <div class="loop-step">
+        <div class="loop-step-num">01 / Discover</div>
+        <div class="loop-step-title">Find the drain.</div>
+        <p class="loop-step-body">Walk the operation. Watch where hours go that shouldn&rsquo;t. Identify the friction point that&rsquo;s worth removing first.</p>
+      </div>
+      <div class="loop-step">
+        <div class="loop-step-num">02 / Build</div>
+        <div class="loop-step-title">Ship the fix.</div>
+        <p class="loop-step-body">Custom system designed around your actual workflow &mdash; not a template, not a SaaS subscription. Your data, your rules, your voice.</p>
+      </div>
+      <div class="loop-step">
+        <div class="loop-step-num">03 / Operate</div>
+        <div class="loop-step-title">Run it for you.</div>
+        <p class="loop-step-body">Monitoring, uptime, exception handling, vendor management. You don&rsquo;t inherit a maintenance burden when I leave &mdash; because I don&rsquo;t leave.</p>
+      </div>
+      <div class="loop-step">
+        <div class="loop-step-num">04 / Improve</div>
+        <div class="loop-step-title">Keep tightening.</div>
+        <p class="loop-step-body">Watch the system in production. Spot the next friction point. Tighten the loop. Then start again at Discover.</p>
+      </div>
+    </div>
+
+    <div class="loop-tagline">
+      &ldquo;I don&rsquo;t hand you the keys and walk away. <span class="accent">I run it. I improve it. The loop doesn&rsquo;t stop.</span>&rdquo;
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div class="container">
+    <div class="value-section-head">
+      <div class="value-eyebrow">What I do for SMBs</div>
+      <h2>Six disciplines, one mission &mdash; take the operation off your plate.</h2>
+      <p class="lead">The full ladder of operations and technology work. Most engagements use two or three of these together. Some start with a single fractional seat and grow into a full rebuild.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-item">
+        <div class="service-num">01</div>
+        <div>
+          <div class="service-name">Custom Application Development</div>
+          <p class="service-desc">Purpose-built systems that fit your workflow &mdash; not generic SaaS reshaped to your business.</p>
         </div>
-    </section>
-
-    <!-- CONTACT SECTION -->
-    <section id="contact">
-        <div class="container">
-            <h2>Let's Work Together</h2>
-            <div class="contact-wrapper">
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Name / Company</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone (optional)</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-                    <div class="form-group">
-                        <label for="message">How can we help?</label>
-                        <textarea id="message" name="message" required></textarea>
-                    </div>
-                    <button type="submit" class="form-submit">Send Message</button>
-                </form>
-                <div class="contact-info">
-                    <h3>Get in Touch</h3>
-                    <div class="contact-item">
-                        <div class="contact-item-label">Email</div>
-                        <div class="contact-item-value"><a href="mailto:TellMeMore@TekOmni.com">TellMeMore@TekOmni.com</a></div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-item-label">Phone</div>
-                        <div class="contact-item-value"><a href="tel:+15022308224">(502) 230-8224</a></div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-item-label">Location</div>
-                        <div class="contact-item-value">Louisville, Kentucky, USA</div>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div class="service-item">
+        <div class="service-num">02</div>
+        <div>
+          <div class="service-name">Data Science &amp; AI Integration</div>
+          <p class="service-desc">AI applied where it earns its keep &mdash; classification, prediction, voice, vision &mdash; not where it&rsquo;s a feature label.</p>
         </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 TekOmni Consulting LLC. All rights reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+      </div>
+      <div class="service-item">
+        <div class="service-num">03</div>
+        <div>
+          <div class="service-name">Process Design &amp; Improvement</div>
+          <p class="service-desc">Map the operation. Find the friction. Rebuild the flow. Then automate the rebuilt flow &mdash; in that order.</p>
         </div>
-    </footer>
+      </div>
+      <div class="service-item">
+        <div class="service-num">04</div>
+        <div>
+          <div class="service-name">Managed IT &amp; Cybersecurity</div>
+          <p class="service-desc">The infrastructure under everything &mdash; monitored, hardened, and kept current so it never becomes the bottleneck.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-num">05</div>
+        <div>
+          <div class="service-name">Fractional C-Suite Leadership</div>
+          <p class="service-desc">CTO/COO-level technology and operations leadership for SMBs that need the seat at the table without the salary.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-num">06</div>
+        <div>
+          <div class="service-name">Marketing Strategy &amp; Execution</div>
+          <p class="service-desc">Outbound that runs on a schedule, in your voice &mdash; without the agency invoice or the &ldquo;next week&rdquo; guilt.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <script>
-        // ===== NAVIGATION & HAMBURGER =====
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
-        const navbar = document.getElementById('navbar');
+<!-- CONTACT / BOOK A CONVERSATION -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="contact-eyebrow">Thirty minutes. No deck. No pitch.</div>
+    <h2>Pick a time. Tell me what&rsquo;s <span class="accent">eating your week</span>.</h2>
+    <p class="contact-lead">
+      Choose any open slot below. You&rsquo;ll get a calendar invite and a confirmation email. We&rsquo;ll spend thirty minutes on the part of your operation that&rsquo;s draining your time &mdash; and whether it&rsquo;s worth automating.
+    </p>
 
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
-
-        // Close menu when a link is clicked
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
-            });
-        });
-
-        // Add shadow on scroll
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 0) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // ===== INTERSECTION OBSERVER FOR FADE-IN ANIMATIONS =====
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
+    <!-- Cal.com inline embed: william-pimentel-zbzwpx/30min · 24h + 1h reminders + no-show follow-up workflows configured -->
+    <div class="cal-embed-card">
+      <div id="my-cal-inline"></div>
+      <div class="cal-fallback">
+        Calendar not loading? <a href="mailto:william.p@tekomni.com?subject=Book%20a%2030-min%20call">Email me directly &rarr;</a>
+      </div>
+    </div>
+    <script type="text/javascript">
+      (function (C, A, L) {
+        let p = function (a, ar) { a.q.push(ar); };
+        let d = C.document;
+        C.Cal = C.Cal || function () {
+          let cal = C.Cal; let ar = arguments;
+          if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; }
+          if (ar[0] === L) {
+            const api = function () { p(api, arguments); };
+            const namespace = ar[1];
+            api.q = api.q || [];
+            if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); }
+            else p(cal, ar);
+            return;
+          }
+          p(cal, ar);
         };
+      })(window, "https://app.cal.com/embed/embed.js", "init");
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const delay = Array.from(entry.target.parentElement.children).indexOf(entry.target);
-                    entry.target.style.animationDelay = `${delay * 0.1}s`;
-                    entry.target.style.opacity = '1';
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
+      Cal("init", "30min", { origin: "https://cal.com" });
 
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
+      Cal.ns["30min"]("inline", {
+        elementOrSelector: "#my-cal-inline",
+        config: { layout: "month_view" },
+        calLink: "william-pimentel-zbzwpx/30min",
+      });
 
-        // ===== FORM HANDLING =====
-        const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const message = document.getElementById('message').value;
-
-            // Basic validation
-            if (!name || !email || !message) {
-                alert('Please fill in all required fields.');
-                return;
-            }
-
-            // Create mailto link with pre-filled data
-            const subject = `New Inquiry from ${name}`;
-            const body = `Name/Company: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`;
-            const mailtoLink = `mailto:TellMeMore@TekOmni.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-            // Open mailto link
-            window.location.href = mailtoLink;
-
-            // Optional: Show success message
-            alert('Thank you! Your message will be sent via your email client.');
-            contactForm.reset();
-        });
-
-        // Privacy link now goes to privacy.html subpage
+      Cal.ns["30min"]("ui", {
+        theme: "light",
+        cssVarsPerTheme: {
+          light: { "cal-brand": "#0d9488" },
+          dark:  { "cal-brand": "#0d9488" }
+        },
+        hideEventTypeDetails: false,
+        layout: "month_view"
+      });
     </script>
+
+    <div class="contact-meta">
+      <div class="contact-meta-item">
+        <span class="label">Or email</span>
+        <a href="mailto:william.p@tekomni.com" class="value">william.p@tekomni.com</a>
+      </div>
+      <div class="contact-meta-item">
+        <span class="label">Phone</span>
+        <a href="tel:+15022308224" class="value">(502) 230-8224</a>
+      </div>
+      <div class="contact-meta-item">
+        <span class="label">Based in</span>
+        <span class="value">Louisville, KY &middot; works nationally</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-left">
+      <div class="footer-logo">Tek<span class="accent">Omni</span> LLC</div>
+      <div class="footer-tag">Operations &middot; Automation &middot; Process Improvement for SMBs</div>
+    </div>
+    <div class="footer-right">
+      <a href="mailto:william.p@tekomni.com">william.p@tekomni.com</a>
+      <span>&middot;</span>
+      <a href="privacy.html">Privacy</a>
+      <span>&middot;</span>
+      <a href="terms.html">Terms</a>
+      <span>&middot;</span>
+      <a href="sms-optin.html">SMS</a>
+      <span>&middot;</span>
+      <span>&copy; 2026 TekOmni LLC</span>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
