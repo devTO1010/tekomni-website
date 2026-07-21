@@ -17,738 +17,746 @@
 <link rel="canonical" href="https://tekomni.com" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
   :root {
-    --teal: #0d9488;
-    --teal-dark: #0f766e;
-    --orange: #d97706;
-    --orange-dark: #b45309;
-    --bg: #fafaf7;
-    --bg-warm: #f5f0eb;
-    --ink: #0a0a0a;
-    --ink-soft: #1a1a1a;
-    --muted: #525252;
-    --muted-soft: #6b7280;
-    --line: #e5e5e5;
-    --line-soft: #f3f4f6;
+    --bg: #0a0e1a;
+    --bg-elev: #0f1420;
+    --bg-elev-2: #141a2a;
+    --line: rgba(255,255,255,0.08);
+    --line-strong: rgba(255,255,255,0.14);
+    --ink: #e6edf3;
+    --ink-dim: #9aa4b2;
+    --ink-mute: #5a6472;
+    --teal: #2dd4bf;
+    --teal-dim: #14b8a6;
+    --amber: #fbbf24;
+    --amber-dim: #d97706;
+    --ok: #10b981;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    color: var(--ink-soft);
+    font-family: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
     background: var(--bg);
-    line-height: 1.6;
+    color: var(--ink);
+    line-height: 1.55;
+    font-feature-settings: 'ss01', 'ss02', 'cv11';
+    -webkit-font-smoothing: antialiased;
   }
   a { color: inherit; text-decoration: none; }
+  .mono { font-family: 'Geist Mono', ui-monospace, monospace; font-feature-settings: 'zero'; }
+
+  /* subtle noise/grid background */
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 96px 96px;
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 0;
+    mask-image: radial-gradient(ellipse at 50% 20%, black 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse at 50% 20%, black 30%, transparent 75%);
+  }
+
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 1.75rem; position: relative; z-index: 1; }
+
+  /* ===== STATUS BAR ===== */
+  .status-bar {
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    padding: 0.55rem 1.75rem;
+    border-bottom: 1px solid var(--line);
+    background: rgba(10,14,26,0.85);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .status-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--ok);
+    box-shadow: 0 0 0 3px rgba(16,185,129,0.15);
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 3px rgba(16,185,129,0.15); }
+    50% { box-shadow: 0 0 0 5px rgba(16,185,129,0.05); }
+  }
+  .status-bar .sep { color: var(--ink-mute); opacity: 0.5; }
+  .status-bar .right { margin-left: auto; opacity: 0.7; }
 
   /* ===== NAV ===== */
   nav {
+    padding: 1.25rem 1.75rem;
+    border-bottom: 1px solid var(--line);
+    background: rgba(10,14,26,0.6);
+    backdrop-filter: blur(10px);
     position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: #fff;
-    border-bottom: 1px solid var(--line-soft);
+    top: 30px;
+    z-index: 99;
   }
-  nav .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1.1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+  nav .container { padding: 0; display: flex; justify-content: space-between; align-items: center; }
   .logo {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 1.5rem;
+    font-family: 'Geist', sans-serif;
     font-weight: 800;
+    font-size: 1.35rem;
     letter-spacing: -0.02em;
-    color: var(--teal);
+    color: #0d9488;
   }
-  .logo .accent { color: var(--orange); }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .logo .accent { color: #d97706; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
   .nav-links a {
-    font-weight: 500;
-    color: var(--ink-soft);
-    font-size: 0.95rem;
-    transition: color 0.2s ease;
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--ink-dim);
+    letter-spacing: 0.02em;
+    transition: color 0.15s ease;
   }
   .nav-links a:hover { color: var(--teal); }
   .nav-cta {
-    background: var(--ink);
-    color: #fff !important;
-    padding: 0.55rem 1.1rem;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    transition: background 0.2s ease;
+    font-family: 'Geist Mono', monospace !important;
+    font-size: 0.78rem !important;
+    padding: 0.5rem 0.9rem;
+    border: 1px solid var(--teal);
+    color: var(--teal) !important;
+    border-radius: 4px;
+    transition: all 0.15s ease;
   }
-  .nav-cta:hover { background: var(--teal); }
+  .nav-cta:hover { background: var(--teal); color: var(--bg) !important; }
 
   /* ===== HERO ===== */
-  #hero {
-    background: linear-gradient(135deg, var(--bg) 0%, var(--bg-warm) 100%);
-    padding: 6rem 0;
-    position: relative;
-    overflow: hidden;
-  }
-  #hero::before {
-    content: "";
-    position: absolute;
-    top: -200px; right: -200px;
-    width: 600px; height: 600px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(13,148,136,0.08) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  #hero .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    position: relative;
-    z-index: 2;
-  }
-
-  .hero-grid {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    max-width: 820px;
-    margin: 0 auto;
-  }
-
+  .hero { padding: 7rem 0 5rem; position: relative; }
   .hero-eyebrow {
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    color: var(--teal);
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+  }
+  .hero-eyebrow::before { content: "// "; opacity: 0.5; }
+  .hero h1 {
+    font-family: 'Geist', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2.4rem, 5.5vw, 4.4rem);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    max-width: 22ch;
+    margin-bottom: 1.75rem;
+  }
+  .hero h1 .accent { color: var(--teal); }
+  .hero h1 .amber { color: var(--amber); }
+  .hero-sub {
+    font-size: 1.15rem;
+    color: var(--ink-dim);
+    max-width: 60ch;
+    line-height: 1.65;
+    margin-bottom: 2.5rem;
+  }
+  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn {
+    font-family: 'Geist', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.9rem 1.5rem;
+    border-radius: 6px;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 0.78rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--teal);
-    background: rgba(13,148,136,0.1);
-    padding: 0.4rem 0.85rem;
-    border-radius: 999px;
-    margin-bottom: 1.5rem;
-  }
-  .hero-eyebrow::before {
-    content: "";
-    display: inline-block;
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--orange);
-  }
-  .hero-copy h1 {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-weight: 800;
-    font-size: 3.8rem;
-    line-height: 1.05;
-    letter-spacing: -0.025em;
-    color: var(--ink);
-    margin-bottom: 1.75rem;
-  }
-  .hero-copy h1 .accent { color: var(--teal); }
-  .hero-subhead {
-    font-size: 1.22rem;
-    color: var(--muted);
-    line-height: 1.65;
-    max-width: 42rem;
-    margin: 0 auto 2.25rem;
-  }
-  .hero-buttons {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 2.75rem;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.95rem 1.7rem;
-    border-radius: 10px;
-    font-weight: 600;
-    font-size: 1rem;
-    transition: all 0.25s ease;
-    font-family: 'Inter', sans-serif;
+    transition: all 0.15s ease;
     cursor: pointer;
-    border: none;
+    border: 1px solid transparent;
   }
   .btn-primary {
     background: var(--teal);
-    color: #fff;
+    color: var(--bg);
   }
   .btn-primary:hover {
-    background: var(--teal-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 24px rgba(13,148,136,0.25);
+    background: #fff;
+    transform: translateY(-1px);
   }
   .btn-ghost {
     background: transparent;
     color: var(--ink);
-    border: 1.5px solid var(--ink);
+    border-color: var(--line-strong);
   }
-  .btn-ghost:hover {
-    background: var(--ink);
-    color: #fff;
-  }
-  .hero-meta {
-    margin-top: 0.5rem;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--muted);
-    letter-spacing: 0.02em;
-  }
-  .hero-meta strong { color: var(--ink); font-weight: 700; }
+  .btn-ghost:hover { border-color: var(--teal); color: var(--teal); }
+  .btn .arrow { font-family: 'Geist Mono', monospace; }
 
-  /* ===== VALUE PROPS SECTION ===== */
-  .value-section {
-    background: #fff;
-    padding: 6rem 0 5rem;
-    border-top: 1px solid var(--line-soft);
-  }
-  .value-section .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-  }
-  .value-section-head {
-    text-align: center;
-    max-width: 720px;
-    margin: 0 auto 3.5rem;
-  }
-  .value-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 0.78rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--orange);
-    background: rgba(217,119,6,0.1);
-    padding: 0.4rem 0.85rem;
-    border-radius: 999px;
-    margin-bottom: 1.25rem;
-  }
-  .value-section h2 {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-weight: 800;
-    font-size: 2.4rem;
-    letter-spacing: -0.025em;
-    color: var(--ink);
-    line-height: 1.15;
-    margin-bottom: 1rem;
-  }
-  .value-section .lead {
-    font-size: 1.1rem;
-    color: var(--muted);
-    line-height: 1.6;
-  }
-  .value-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-  }
-  .value-card {
-    background: var(--bg);
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    padding: 2rem;
-    position: relative;
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-    display: flex;
-    flex-direction: column;
-  }
-  .value-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 40px -12px rgba(13,148,136,0.18);
-    border-color: var(--teal);
-  }
-  .value-card::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 2rem;
-    width: 2.5rem; height: 3px;
-    background: var(--teal);
-    border-radius: 0 0 2px 2px;
-  }
-  .value-card.card-2::before { background: var(--orange); }
-  .value-card-num {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-weight: 800;
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--orange);
-    margin-bottom: 0.85rem;
-  }
-  .value-card-num span {
-    color: var(--ink);
-    margin-left: 0.5rem;
-  }
-  .value-card-headline {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-weight: 800;
-    font-size: 1.55rem;
-    line-height: 1.15;
-    color: var(--ink);
-    letter-spacing: -0.025em;
-    margin-bottom: 1rem;
-  }
-  .value-card-body {
-    font-size: 0.97rem;
-    color: var(--muted);
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-    flex-grow: 1;
-  }
-  .value-pills {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    padding-top: 1.25rem;
+  /* ===== KPI STRIP ===== */
+  .kpi-strip {
     border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: var(--bg-elev);
   }
-  .value-pill {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.6rem;
-    font-size: 0.88rem;
-    color: var(--ink-soft);
-    line-height: 1.45;
-  }
-  .value-pill::before {
-    content: "";
-    width: 16px; height: 16px;
-    flex-shrink: 0;
-    background-color: var(--teal);
-    -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M13.5 4.5l-7 7-3-3' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/></svg>") no-repeat center / contain;
-    mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M13.5 4.5l-7 7-3-3' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/></svg>") no-repeat center / contain;
-    margin-top: 3px;
-  }
-  .value-pill strong {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-weight: 700;
-    color: var(--ink);
-  }
-
-  /* ===== Below-fold teaser ===== */
-  .below-teaser {
-    background: var(--ink);
-    color: #fff;
-    padding: 3rem 0;
-  }
-  .below-teaser .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-    flex-wrap: wrap;
-  }
-  .below-teaser .pull {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-weight: 800;
-    font-size: 2rem;
-    letter-spacing: -0.02em;
-    line-height: 1.1;
-  }
-  .below-teaser .pull .accent { color: var(--orange); }
-  .below-teaser .sub {
-    font-size: 0.95rem;
-    color: #d4d4d4;
-    max-width: 32rem;
-  }
-  .below-teaser .cta-link {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-weight: 700;
-    font-size: 0.95rem;
-    color: var(--orange);
-    border-bottom: 2px solid var(--orange);
-    padding-bottom: 2px;
-    transition: color 0.2s ease;
-  }
-  .below-teaser .cta-link:hover { color: #fff; border-color: #fff; }
-
-  /* ===== HOW I WORK (the loop) ===== */
-  .how-section {
-    background: #fff;
-    padding: 6rem 0 5rem;
-  }
-  .how-section .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-  }
-  .loop-grid {
+  .kpi-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1.25rem;
-    margin-top: 3rem;
   }
-  .loop-step {
-    background: var(--bg);
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    padding: 1.75rem;
-    position: relative;
-    transition: transform 0.25s ease, border-color 0.25s ease;
+  .kpi {
+    padding: 2rem 1.5rem;
+    border-right: 1px solid var(--line);
   }
-  .loop-step:hover {
-    transform: translateY(-3px);
-    border-color: var(--teal);
-  }
-  .loop-step-num {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 0.72rem;
-    font-weight: 800;
-    color: var(--orange);
+  .kpi:last-child { border-right: none; }
+  .kpi-label {
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    color: var(--ink-mute);
+    margin-bottom: 0.75rem;
     text-transform: uppercase;
-    letter-spacing: 0.14em;
-    margin-bottom: 0.85rem;
   }
-  .loop-step-title {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 1.2rem;
-    font-weight: 800;
+  .kpi-value {
+    font-family: 'Geist Mono', monospace;
+    font-weight: 500;
+    font-size: 2.6rem;
     color: var(--ink);
     letter-spacing: -0.02em;
-    margin-bottom: 0.65rem;
+    line-height: 1;
+    font-feature-settings: 'zero', 'tnum';
+  }
+  .kpi-value .unit {
+    font-size: 1.4rem;
+    color: var(--teal);
+    margin-left: 0.15rem;
+  }
+  .kpi-caption {
+    margin-top: 0.5rem;
+    font-size: 0.82rem;
+    color: var(--ink-dim);
+    line-height: 1.4;
+  }
+
+  /* ===== SECTION HEADER ===== */
+  .section { padding: 6rem 0; border-top: 1px solid var(--line); }
+  .section-eyebrow {
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    color: var(--teal);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .section-eyebrow::before { content: "// "; opacity: 0.5; }
+  .section h2 {
+    font-family: 'Geist', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.9rem, 3.5vw, 2.75rem);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    max-width: 28ch;
+    margin-bottom: 1rem;
+  }
+  .section-lead {
+    font-size: 1.08rem;
+    color: var(--ink-dim);
+    max-width: 65ch;
+    line-height: 1.6;
+    margin-bottom: 3.5rem;
+  }
+
+  /* ===== PAIN SECTION ===== */
+  .pain-section { padding: 5rem 0 4rem; }
+  .pain-body {
+    max-width: 62ch;
+    font-size: 1.2rem;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+  .pain-body p { margin-bottom: 1.25rem; }
+  .pain-body p:last-child { margin-bottom: 0; color: var(--ink-dim); }
+  .pain-body em {
+    font-style: normal;
+    color: var(--amber);
+    font-weight: 500;
+  }
+  .pain-turn {
+    margin-top: 2.75rem;
+    padding-top: 1.75rem;
+    border-top: 1px dashed var(--line);
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.95rem;
+    color: var(--teal);
+    max-width: 62ch;
+    letter-spacing: 0.005em;
+  }
+  .pain-turn .turn-arrow {
+    color: var(--amber);
+    margin-right: 0.5rem;
+    font-size: 1.1rem;
+  }
+
+  /* ===== CASE STUDIES ===== */
+  .case-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .case {
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 2rem 2.25rem;
+    display: grid;
+    grid-template-columns: 1.5fr 2fr 1fr;
+    gap: 2.5rem;
+    align-items: start;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+  .case:hover { border-color: var(--line-strong); background: var(--bg-elev-2); }
+  .case-header .case-index {
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--ink-mute);
+    letter-spacing: 0.06em;
+    margin-bottom: 0.5rem;
+  }
+  .case-header .case-product {
+    font-family: 'Geist', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.35rem;
+  }
+  .case-header .case-product .dot { color: var(--teal); }
+  .case-header .case-domain {
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--amber);
+    letter-spacing: 0.02em;
+  }
+  .case-body p { color: var(--ink-dim); font-size: 0.98rem; line-height: 1.6; }
+  .case-body p strong { color: var(--ink); font-weight: 600; }
+  .case-metrics { display: flex; flex-direction: column; gap: 0.85rem; }
+  .case-metric {
+    padding: 0.75rem 1rem;
+    background: var(--bg);
+    border-left: 2px solid var(--teal);
+    border-radius: 0 4px 4px 0;
+  }
+  .case-metric .label {
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.2rem;
+  }
+  .case-metric .value {
+    font-family: 'Geist', sans-serif;
+    font-weight: 600;
+    font-size: 0.92rem;
+    color: var(--ink);
+  }
+
+  /* ===== LOOP DIAGRAM ===== */
+  .loop-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    align-items: stretch;
+    margin-top: 1rem;
+  }
+  .loop-step {
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 1.5rem 1.5rem;
+    position: relative;
+  }
+  .loop-step-num {
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--teal);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+  }
+  .loop-step-title {
+    font-family: 'Geist', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: -0.015em;
+    margin-bottom: 0.5rem;
   }
   .loop-step-body {
-    font-size: 0.92rem;
-    color: var(--muted);
+    font-size: 0.88rem;
+    color: var(--ink-dim);
     line-height: 1.55;
   }
   .loop-tagline {
-    margin-top: 3rem;
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px dashed var(--line);
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.88rem;
+    color: var(--ink-dim);
     text-align: center;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 1.35rem;
-    font-weight: 600;
-    color: var(--ink);
-    font-style: italic;
-    line-height: 1.5;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
   }
-  .loop-tagline .accent { color: var(--teal); font-style: normal; }
+  .loop-tagline .accent { color: var(--teal); }
 
-  /* ===== SERVICES ===== */
-  .services-section {
-    background: var(--bg);
-    padding: 6rem 0;
-    border-top: 1px solid var(--line-soft);
-  }
-  .services-section .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-  }
-  .services-grid {
+  /* ===== SERVICES (docs-table style) ===== */
+  .svc-table { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+  .svc-row {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem;
-    margin-top: 3rem;
+    grid-template-columns: 60px 1.2fr 2fr;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--line);
+    align-items: baseline;
+    gap: 1.5rem;
+    transition: background 0.15s ease;
   }
-  .service-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    padding: 1.5rem;
-    background: #fff;
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    transition: transform 0.2s ease, border-color 0.2s ease;
-  }
-  .service-item:hover {
-    transform: translateY(-2px);
-    border-color: var(--teal);
-  }
-  .service-num {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 800;
+  .svc-row:last-child { border-bottom: none; }
+  .svc-row:hover { background: var(--bg-elev); }
+  .svc-num {
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.78rem;
     color: var(--teal);
-    background: rgba(13,148,136,0.1);
-    padding: 0.45rem 0.65rem;
-    border-radius: 6px;
-    flex-shrink: 0;
-    line-height: 1;
+    letter-spacing: 0.05em;
   }
-  .service-name {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 1.05rem;
-    font-weight: 700;
+  .svc-name {
+    font-family: 'Geist', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
     color: var(--ink);
-    letter-spacing: -0.015em;
-    margin-bottom: 0.4rem;
+    letter-spacing: -0.01em;
   }
-  .service-desc {
+  .svc-desc {
     font-size: 0.92rem;
-    color: var(--muted);
+    color: var(--ink-dim);
     line-height: 1.55;
   }
 
-  /* ===== CONTACT ===== */
-  .contact-section {
-    background: linear-gradient(135deg, var(--ink) 0%, #1a3a36 100%);
-    color: #fff;
-    padding: 7rem 0;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
+  /* ===== SPINE / ABOUT (timeline) ===== */
+  .spine-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 4rem;
   }
-  .contact-section::before {
-    content: "";
-    position: absolute;
-    top: -150px; left: -150px;
-    width: 500px; height: 500px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(13,148,136,0.25) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .contact-section::after {
-    content: "";
-    position: absolute;
-    bottom: -200px; right: -100px;
-    width: 600px; height: 600px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(217,119,6,0.15) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .contact-section .container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    position: relative;
-    z-index: 2;
-  }
-  /* Cal.com embed card — light surface inside the dark contact section */
-  .cal-embed-card {
-    background: #fff;
-    border-radius: 18px;
-    padding: 1rem;
-    margin: 2.5rem auto;
-    max-width: 920px;
-    box-shadow: 0 24px 60px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.06);
-    overflow: hidden;
-  }
-  #my-cal-inline {
-    width: 100%;
-    min-height: 640px;
-  }
-  .cal-fallback {
-    margin-top: 0.75rem;
-    font-size: 0.85rem;
-    color: #a3a3a3;
-    text-align: center;
-  }
-  .cal-fallback a {
-    color: var(--orange);
-    border-bottom: 1px solid transparent;
-    transition: border-color 0.2s ease;
-  }
-  .cal-fallback a:hover { border-bottom-color: var(--orange); }
-  .contact-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 0.78rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: var(--orange);
-    background: rgba(217,119,6,0.18);
-    padding: 0.45rem 0.95rem;
-    border-radius: 999px;
-    margin-bottom: 1.5rem;
-  }
-  .contact-section h2 {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-weight: 800;
-    font-size: 3rem;
-    letter-spacing: -0.025em;
-    line-height: 1.1;
+  .spine-copy p {
+    color: var(--ink-dim);
+    font-size: 1.02rem;
+    line-height: 1.7;
     margin-bottom: 1.25rem;
-    color: #fff;
   }
-  .contact-section h2 .accent { color: var(--orange); }
-  .contact-lead {
-    font-size: 1.18rem;
-    color: #d4d4d4;
-    max-width: 38rem;
-    margin: 0 auto 2.5rem;
+  .spine-copy p strong { color: var(--ink); font-weight: 600; }
+  .spine-certs {
+    margin-top: 1.5rem;
+    padding: 1.25rem;
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+  }
+  .spine-certs .label {
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--ink-mute);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.65rem;
+  }
+  .spine-certs .certs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.5rem;
+  }
+  .cert-pill {
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--amber);
+    padding: 0.25rem 0.55rem;
+    border: 1px solid rgba(251,191,36,0.3);
+    border-radius: 3px;
+    background: rgba(251,191,36,0.05);
+  }
+  .timeline {
+    position: relative;
+    padding-left: 2rem;
+  }
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 0.25rem; top: 0.5rem; bottom: 0.5rem;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--teal), var(--line) 30%, var(--line));
+  }
+  .tl-item { position: relative; padding-bottom: 2.25rem; }
+  .tl-item:last-child { padding-bottom: 0; }
+  .tl-item::before {
+    content: "";
+    position: absolute;
+    left: -1.87rem; top: 0.55rem;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--teal);
+  }
+  .tl-item.current::before {
+    background: var(--teal);
+    box-shadow: 0 0 0 4px rgba(45,212,191,0.15);
+  }
+  .tl-date {
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--ink-mute);
+    letter-spacing: 0.06em;
+    margin-bottom: 0.35rem;
+    text-transform: uppercase;
+  }
+  .tl-role {
+    font-family: 'Geist', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin-bottom: 0.15rem;
+    letter-spacing: -0.015em;
+  }
+  .tl-company {
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--teal);
+    margin-bottom: 0.6rem;
+  }
+  .tl-body {
+    font-size: 0.92rem;
+    color: var(--ink-dim);
     line-height: 1.6;
   }
-  .contact-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    background: var(--teal);
-    color: #fff;
-    padding: 1.15rem 2.5rem;
+
+  /* ===== CONTACT ===== */
+  .contact-inner {
+    background: linear-gradient(180deg, var(--bg-elev) 0%, var(--bg) 100%);
+    border: 1px solid var(--line);
     border-radius: 12px;
-    font-family: 'Inter', sans-serif;
-    font-size: 1.05rem;
-    font-weight: 700;
-    margin-bottom: 2.5rem;
-    transition: all 0.25s ease;
-    border: none;
-    cursor: pointer;
+    padding: 4rem 3rem;
+    text-align: center;
   }
-  .contact-cta:hover {
-    background: #14b8a6;
-    transform: translateY(-3px);
-    box-shadow: 0 16px 36px rgba(13,148,136,0.4);
+  .contact-inner h2 { margin: 0 auto 1rem; max-width: 24ch; }
+  .contact-inner .section-lead { margin: 0 auto 2.5rem; }
+  .cal-embed-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 0.75rem;
+    margin: 0 auto;
+    max-width: 900px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.5);
   }
+  #my-cal-inline { width: 100%; min-height: 640px; }
+  .cal-fallback {
+    margin-top: 1rem;
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--ink-mute);
+  }
+  .cal-fallback a { color: var(--teal); }
   .contact-meta {
     display: flex;
     justify-content: center;
     gap: 2.5rem;
     flex-wrap: wrap;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 0.92rem;
+    margin-top: 2.5rem;
     padding-top: 2.5rem;
-    border-top: 1px solid rgba(255,255,255,0.1);
+    border-top: 1px solid var(--line);
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.85rem;
   }
-  .contact-meta-item {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.3rem;
-  }
-  .contact-meta-item .label {
-    font-size: 0.72rem;
+  .contact-meta a { color: var(--ink); border-bottom: 1px solid transparent; transition: border-color 0.15s ease; }
+  .contact-meta a:hover { border-bottom-color: var(--teal); }
+  .contact-meta .label {
+    font-size: 0.68rem;
+    color: var(--ink-mute);
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: #737373;
-    font-weight: 700;
-  }
-  .contact-meta-item .value {
-    color: #fff;
-    font-weight: 600;
-    font-size: 1rem;
-  }
-  .contact-meta-item a {
-    color: #fff;
-    border-bottom: 1px solid transparent;
-    transition: border-color 0.2s ease, color 0.2s ease;
-  }
-  .contact-meta-item a:hover {
-    color: var(--orange);
-    border-bottom-color: var(--orange);
+    margin-right: 0.5rem;
   }
 
   /* ===== FOOTER ===== */
-  .site-footer {
-    background: #050505;
-    color: #737373;
-    padding: 2.5rem 0;
-    font-size: 0.85rem;
-  }
-  .site-footer .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-  .footer-left {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-  }
-  .footer-logo {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-weight: 800;
-    color: #fff;
-    font-size: 1rem;
-    letter-spacing: -0.015em;
-  }
-  .footer-logo .accent { color: var(--orange); }
-  .footer-tag {
+  footer {
+    padding: 2rem 0;
+    border-top: 1px solid var(--line);
+    font-family: 'Geist Mono', monospace;
     font-size: 0.78rem;
-    color: #737373;
+    color: var(--ink-mute);
   }
-  .footer-right {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    font-size: 0.82rem;
-    color: #737373;
-  }
-  .footer-right a {
-    color: #a3a3a3;
-    transition: color 0.2s ease;
-  }
-  .footer-right a:hover { color: var(--teal); }
+  footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  footer .accent { color: #d97706; }
 
-  /* ===== Responsive ===== */
+  /* Responsive */
   @media (max-width: 900px) {
-    .hero-copy h1 { font-size: 2.4rem; }
     .nav-links { display: none; }
-    .below-teaser .container { flex-direction: column; align-items: flex-start; }
-    .value-grid { grid-template-columns: 1fr; }
-    .value-section h2 { font-size: 1.9rem; }
-    .loop-grid { grid-template-columns: repeat(2, 1fr); }
-    .services-grid { grid-template-columns: 1fr; }
-    .contact-section h2 { font-size: 2.2rem; }
-    .contact-meta { flex-direction: column; gap: 1.5rem; }
-    .site-footer .container { flex-direction: column; text-align: center; }
-  }
-  @media (max-width: 600px) {
-    .loop-grid { grid-template-columns: 1fr; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi { border-right: none; border-bottom: 1px solid var(--line); }
+    .kpi:nth-child(2n) { border-right: none; }
+    .kpi:nth-child(odd) { border-right: 1px solid var(--line); }
+    .case { grid-template-columns: 1fr; gap: 1.5rem; }
+    .loop-row { grid-template-columns: repeat(2, 1fr); }
+    .spine-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .status-bar .right { display: none; }
+    .contact-inner { padding: 2.5rem 1.5rem; }
   }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
+<div class="status-bar">
+  <span class="status-dot"></span>
+  SYSTEMS OPERATIONAL
+  <span class="sep">/</span>
+  LOUISVILLE, KY
+  <span class="sep">/</span>
+  WORKS NATIONALLY
+  <span class="right">v2026.01</span>
+</div>
+
 <nav>
   <div class="container">
-    <div class="logo">Tek<span class="accent">Omni</span></div>
+    <a href="#" class="logo">Tek<span class="accent">Omni</span></a>
     <ul class="nav-links">
-      <li><a href="#work">Case Studies</a></li>
-      <li><a href="#how-i-work">How I Work</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#contact" class="nav-cta">Book a call</a></li>
+      <li><a href="#work">./work</a></li>
+      <li><a href="#loop">./how</a></li>
+      <li><a href="#services">./services</a></li>
+      <li><a href="#about">./about</a></li>
+      <li><a href="#contact" class="nav-cta">book_call →</a></li>
     </ul>
   </div>
 </nav>
 
-<!-- HERO -->
-<section id="hero">
+<section class="hero">
   <div class="container">
-    <div class="hero-grid">
+    <div class="hero-eyebrow">Custom automation for SMB owners</div>
+    <h1>You didn't start this business to spend all your <span class="accent">evenings</span> on it.</h1>
+    <p class="hero-sub">
+      I build the automation that takes the operation off your plate &mdash; so the evenings, weekends, and white space come back. For your family. For the next venture. For whatever <span class="amber">"free"</span> means to you.
+    </p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-primary">Book a 30-min call <span class="arrow">→</span></a>
+      <a href="#work" class="btn btn-ghost">See production systems</a>
+    </div>
+  </div>
+</section>
 
-      <div class="hero-copy">
-        <div class="hero-eyebrow">Operations &middot; Automation &middot; Process Improvement</div>
-        <h1>Streamline Operations. More Time for <span class="accent">Life</span></h1>
-        <p class="hero-subhead">
-          I&rsquo;m an operations expert who rebuilds the parts of your business that are eating your week. Custom automation, designed around your actual workflow &mdash; so the evenings and weekends you&rsquo;ve been losing go back to <strong>family, friends, hobbies, travel,</strong> and everything you built this business to fund.
-        </p>
-        <div class="hero-buttons">
-          <a href="#contact" class="btn btn-primary">Book a 30-min call &rarr;</a>
-          <a href="#work" class="btn btn-ghost">See the work</a>
+<section class="section pain-section">
+  <div class="container">
+    <div class="section-eyebrow">The seam</div>
+    <h2>You already know which workflow it is.</h2>
+    <div class="pain-body">
+      <p>It's not one big thing.</p>
+      <p>It's the estimate that ate Sunday night. The dispatch call at 2 a.m. The marketing post that never went up. The vendor renewal you noticed a week late.</p>
+      <p>Every workflow that still needs <em>you</em> to run. That's the seam &mdash; where the hours you thought you'd stop paying keep quietly getting paid.</p>
+    </div>
+    <div class="pain-turn">
+      <span class="turn-arrow">↳</span> Every one of them can be automated. Every one can run without you.
+    </div>
+  </div>
+</section>
+
+<section class="section pain-section">
+  <div class="container">
+    <div class="section-eyebrow">The queue</div>
+    <h2>You already know which queue is bleeding hours.</h2>
+    <div class="pain-body">
+      <p>It's not one big fire.</p>
+      <p>The merger integration that pushed your support teams underwater. The AI vendor pitching your team while the toil that started it all stays untouched. The recurring incident nobody's had time to root-cause since Q2.</p>
+      <p>Every workflow that keeps escalating to the same three people. <em>That's where the money goes.</em></p>
+    </div>
+    <div class="pain-turn">
+      <span class="turn-arrow">↳</span> I've architected that transformation inside a 160+ staff global service desk. I can architect yours.
+    </div>
+  </div>
+</section>
+
+<section class="kpi-strip">
+  <div class="container">
+    <div class="kpi-grid">
+      <div class="kpi">
+        <div class="kpi-label">[ years_in_enterprise_it ]</div>
+        <div class="kpi-value">18<span class="unit">+</span></div>
+        <div class="kpi-caption">Truist &middot; Office Depot &middot; CompuCom</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">[ service_desk_backlog_cut ]</div>
+        <div class="kpi-value">60<span class="unit">%</span></div>
+        <div class="kpi-caption">160+ staff transformation through a bank merger</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">[ avg_mttr_major_incident ]</div>
+        <div class="kpi-value">15<span class="unit">min</span></div>
+        <div class="kpi-caption">40+ global staff across net, server, SaaS, VDI</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">[ production_systems_live ]</div>
+        <div class="kpi-value">3</div>
+        <div class="kpi-caption">Trucking &middot; Electrical &middot; SMB marketing</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="work">
+  <div class="container">
+    <div class="section-eyebrow">Case studies</div>
+    <h2>Three rebuilds. Three SMBs. Time recovered.</h2>
+    <p class="section-lead">
+      Every engagement starts by finding what's eating the owner's week. Every deliverable is a system that runs after I leave &mdash; because I don't leave.
+    </p>
+
+    <div class="case-grid">
+
+      <div class="case">
+        <div class="case-header">
+          <div class="case-index">CASE_01 &middot; TRUCKING</div>
+          <div class="case-product">GoFleetAI<span class="dot">.</span></div>
+          <div class="case-domain">BLF Transportation &middot; 30 power units</div>
         </div>
-        <div class="hero-meta">
-          Built for SMB owners who&rsquo;d rather not spend the next decade running the operation by hand.
+        <div class="case-body">
+          <p><strong>The dispatch bottleneck.</strong> Every load, every reroute, every HOS check ran through one human &mdash; 15 minutes of clicks and lookups per decision. Late pickups and compliance violations were caught after the fact, sometimes at 2 a.m. Rebuilt the flow around an AI assignment engine that scores HOS, equipment, weather, and customer windows on every load, and flags exceptions before they escalate. <strong>Dispatch decisions now take seconds.</strong></p>
+        </div>
+        <div class="case-metrics">
+          <div class="case-metric"><div class="label">Dispatch decisioning</div><div class="value">15 min → seconds</div></div>
+          <div class="case-metric"><div class="label">2 a.m. calls</div><div class="value">Eliminated</div></div>
+          <div class="case-metric"><div class="label">Bidding accuracy</div><div class="value">92% · +22% lanes · +12% margin</div></div>
+        </div>
+      </div>
+
+      <div class="case">
+        <div class="case-header">
+          <div class="case-index">CASE_02 &middot; ELECTRICAL</div>
+          <div class="case-product">TheExpertAssistant<span class="dot">.</span></div>
+          <div class="case-domain">Copper Line Electric &middot; commercial contractor</div>
+        </div>
+        <div class="case-body">
+          <p><strong>Estimates ate Sundays.</strong> Walking sites by day was fast; nights got burned on copy-pasting catalog SKUs, reconciling labor rates, formatting quotes. Customers waited days for proposals. Built a voice-first estimating system: dictate scope on-site, the system matches the QuickBooks catalog and labor rates, priced PDF lands in the customer's inbox before you're back in the truck.</p>
+        </div>
+        <div class="case-metrics">
+          <div class="case-metric"><div class="label">Quote turnaround</div><div class="value">Hours, not days</div></div>
+          <div class="case-metric"><div class="label">Sundays</div><div class="value">Reclaimed</div></div>
+          <div class="case-metric"><div class="label">Close rate</div><div class="value">Higher · scope still fresh</div></div>
+        </div>
+      </div>
+
+      <div class="case">
+        <div class="case-header">
+          <div class="case-index">CASE_03 &middot; SMB MARKETING</div>
+          <div class="case-product">OmniPost<span class="dot">.</span></div>
+          <div class="case-domain">Multi-tenant social publishing</div>
+        </div>
+        <div class="case-body">
+          <p><strong>Marketing was always "next week."</strong> Weekly posting matters for hires, buyers, and staying top-of-mind &mdash; but doing it meant becoming a part-time copywriter, designer, and scheduler. Built a publishing system that learns brand voice once, generates platform-specific content on a schedule, and asks for nothing more than a five-minute weekly approval.</p>
+        </div>
+        <div class="case-metrics">
+          <div class="case-metric"><div class="label">Weekly time</div><div class="value">5 min vs. 3 hrs</div></div>
+          <div class="case-metric"><div class="label">Agency invoice</div><div class="value">$2–5k/mo eliminated</div></div>
+          <div class="case-metric"><div class="label">Channel cadence</div><div class="value">Never dark</div></div>
         </div>
       </div>
 
@@ -756,257 +764,209 @@
   </div>
 </section>
 
-<!-- VALUE PROPS — three problems, three production systems, three SMBs got their time back -->
-<section class="value-section" id="work">
+<section class="section" id="loop">
   <div class="container">
-    <div class="value-section-head">
-      <div class="value-eyebrow">Three rebuilds. Three SMBs. Time recovered.</div>
-      <h2>I find the drain. I build the fix.</h2>
-      <p class="lead">Three SMBs hit common operational friction. Three custom rebuilds shipped and running. Here&rsquo;s what each one was draining, what got built, and what came back to the owner.</p>
-    </div>
+    <div class="section-eyebrow">The loop</div>
+    <h2>Discover → Build → Operate → Improve.</h2>
+    <p class="section-lead">
+      A continuous loop, not a project handoff. Most automation projects die because the consultant ships and disappears. I run the system after launch &mdash; so it gets better while you sleep.
+    </p>
 
-    <div class="value-grid">
-
-      <!-- Case Study 1: Trucking dispatch rebuild -->
-      <div class="value-card card-1">
-        <div class="value-card-num">01 <span>Regional trucking fleet</span></div>
-        <div class="value-card-headline">Dispatch was the bottleneck. Now it isn&rsquo;t.</div>
-        <p class="value-card-body">
-          Every load assignment, every reroute, every HOS check ran through one human. Late pickups and compliance violations were caught after the fact &mdash; sometimes at 2 a.m. <strong>I rebuilt the dispatch flow</strong> around an AI assignment engine that weighs hours-of-service, equipment, weather, and customer windows on every load, and surfaces exceptions before they escalate.
-        </p>
-        <div class="value-pills">
-          <div class="value-pill"><span><strong>Routing decisions: hours &rarr; minutes</strong></span></div>
-          <div class="value-pill"><span><strong>2 a.m. exception calls: eliminated</strong></span></div>
-          <div class="value-pill"><span><strong>Compliance violations caught before they happen</strong> &mdash; not after</span></div>
-        </div>
-      </div>
-
-      <!-- Case Study 2: Electrical contractor estimating rebuild -->
-      <div class="value-card card-2">
-        <div class="value-card-num">02 <span>Commercial electrical contractor</span></div>
-        <div class="value-card-headline">Estimates ate Sundays. Now they don&rsquo;t.</div>
-        <p class="value-card-body">
-          Walking the site by day was fast. The write-up at night was what killed evenings &mdash; copy-pasting catalog SKUs, reconciling labor against role rates, formatting quotes. Customers waited days for proposals. <strong>I built a voice-first estimating system:</strong> dictate the scope on-site, the system matches the QuickBooks catalog and labor rates, the priced PDF lands in the customer&rsquo;s inbox before you&rsquo;re back in the truck.
-        </p>
-        <div class="value-pills">
-          <div class="value-pill"><span><strong>Quote turnaround: hours, not days</strong></span></div>
-          <div class="value-pill"><span><strong>Sundays reclaimed</strong></span></div>
-          <div class="value-pill"><span><strong>Higher close rate</strong> &mdash; speed wins deals while scope is fresh</span></div>
-        </div>
-      </div>
-
-      <!-- Case Study 3: SMB outbound rebuild -->
-      <div class="value-card card-3">
-        <div class="value-card-num">03 <span>SMB marketing operations</span></div>
-        <div class="value-card-headline">Marketing was always &ldquo;next week.&rdquo; Now it just runs.</div>
-        <p class="value-card-body">
-          The owner knew weekly posting mattered &mdash; for hires, for buyers, for staying top-of-mind. But doing it meant becoming a part-time copywriter, designer, and scheduler. The agency alternative was $2&ndash;5k/mo for generic posts. <strong>I built a publishing system</strong> that learns the brand voice once, generates platform-specific content on a schedule, and asks for nothing more than a five-minute weekly approval.
-        </p>
-        <div class="value-pills">
-          <div class="value-pill"><span><strong>5 minutes a week</strong> instead of three hours</span></div>
-          <div class="value-pill"><span><strong>$2&ndash;5k/mo agency invoice eliminated</strong> &mdash; without losing brand voice</span></div>
-          <div class="value-pill"><span><strong>Channels stay live</strong> &mdash; no more &ldquo;I&rsquo;ll get to it next week&rdquo;</span></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- TRANSITION BAND -->
-<section class="below-teaser">
-  <div class="container">
-    <div>
-      <div class="pull">Take back <span class="accent">your time</span></div>
-      <div class="sub">Hours reclaimed. Evenings handed back. Weeks freed from the operation. That&rsquo;s the only ROI that matters.</div>
-    </div>
-    <a href="#how-i-work" class="cta-link">See how I work &rarr;</a>
-  </div>
-</section>
-
-<!-- HOW I WORK — the loop -->
-<section class="how-section" id="how-i-work">
-  <div class="container">
-    <div class="value-section-head">
-      <div class="value-eyebrow">How I work</div>
-      <h2>Discover &rarr; Build &rarr; Operate &rarr; Improve.</h2>
-      <p class="lead">A continuous loop, not a project handoff. Most automation projects die because the consultant ships the system and disappears. I run it after launch &mdash; so it gets better while you sleep.</p>
-    </div>
-
-    <div class="loop-grid">
+    <div class="loop-row">
       <div class="loop-step">
-        <div class="loop-step-num">01 / Discover</div>
+        <div class="loop-step-num">01 / DISCOVER</div>
         <div class="loop-step-title">Find the drain.</div>
-        <p class="loop-step-body">Walk the operation. Watch where hours go that shouldn&rsquo;t. Identify the friction point that&rsquo;s worth removing first.</p>
+        <p class="loop-step-body">Walk the operation. Watch where hours go that shouldn't. Identify the friction point worth removing first.</p>
       </div>
       <div class="loop-step">
-        <div class="loop-step-num">02 / Build</div>
+        <div class="loop-step-num">02 / BUILD</div>
         <div class="loop-step-title">Ship the fix.</div>
-        <p class="loop-step-body">Custom system designed around your actual workflow &mdash; not a template, not a SaaS subscription. Your data, your rules, your voice.</p>
+        <p class="loop-step-body">Custom system designed around your actual workflow &mdash; not a template, not a SaaS subscription. Your data, your rules.</p>
       </div>
       <div class="loop-step">
-        <div class="loop-step-num">03 / Operate</div>
+        <div class="loop-step-num">03 / OPERATE</div>
         <div class="loop-step-title">Run it for you.</div>
-        <p class="loop-step-body">Monitoring, uptime, exception handling, vendor management. You don&rsquo;t inherit a maintenance burden when I leave &mdash; because I don&rsquo;t leave.</p>
+        <p class="loop-step-body">Monitoring, uptime, exception handling, vendor management. You don't inherit a maintenance burden &mdash; because I don't leave.</p>
       </div>
       <div class="loop-step">
-        <div class="loop-step-num">04 / Improve</div>
+        <div class="loop-step-num">04 / IMPROVE</div>
         <div class="loop-step-title">Keep tightening.</div>
-        <p class="loop-step-body">Watch the system in production. Spot the next friction point. Tighten the loop. Then start again at Discover.</p>
+        <p class="loop-step-body">Watch the system in production. Spot the next friction point. Tighten the loop. Then back to Discover.</p>
       </div>
     </div>
 
     <div class="loop-tagline">
-      &ldquo;I don&rsquo;t hand you the keys and walk away. <span class="accent">I run it. I improve it. The loop doesn&rsquo;t stop.</span>&rdquo;
+      &gt; I don't hand you the keys and walk away. <span class="accent">I run it. I improve it. The loop doesn't stop.</span>
     </div>
   </div>
 </section>
 
-<!-- SERVICES -->
-<section class="services-section" id="services">
+<section class="section" id="services">
   <div class="container">
-    <div class="value-section-head">
-      <div class="value-eyebrow">What I do for SMBs</div>
-      <h2>Six disciplines, one mission &mdash; take the operation off your plate.</h2>
-      <p class="lead">The full ladder of operations and technology work. Most engagements use two or three of these together. Some start with a single fractional seat and grow into a full rebuild.</p>
-    </div>
-
-    <div class="services-grid">
-      <div class="service-item">
-        <div class="service-num">01</div>
-        <div>
-          <div class="service-name">Custom Application Development</div>
-          <p class="service-desc">Purpose-built systems that fit your workflow &mdash; not generic SaaS reshaped to your business.</p>
-        </div>
-      </div>
-      <div class="service-item">
-        <div class="service-num">02</div>
-        <div>
-          <div class="service-name">Data Science &amp; AI Integration</div>
-          <p class="service-desc">AI applied where it earns its keep &mdash; classification, prediction, voice, vision &mdash; not where it&rsquo;s a feature label.</p>
-        </div>
-      </div>
-      <div class="service-item">
-        <div class="service-num">03</div>
-        <div>
-          <div class="service-name">Process Design &amp; Improvement</div>
-          <p class="service-desc">Map the operation. Find the friction. Rebuild the flow. Then automate the rebuilt flow &mdash; in that order.</p>
-        </div>
-      </div>
-      <div class="service-item">
-        <div class="service-num">04</div>
-        <div>
-          <div class="service-name">Managed IT &amp; Cybersecurity</div>
-          <p class="service-desc">The infrastructure under everything &mdash; monitored, hardened, and kept current so it never becomes the bottleneck.</p>
-        </div>
-      </div>
-      <div class="service-item">
-        <div class="service-num">05</div>
-        <div>
-          <div class="service-name">Fractional C-Suite Leadership</div>
-          <p class="service-desc">CTO/COO-level technology and operations leadership for SMBs that need the seat at the table without the salary.</p>
-        </div>
-      </div>
-      <div class="service-item">
-        <div class="service-num">06</div>
-        <div>
-          <div class="service-name">Marketing Strategy &amp; Execution</div>
-          <p class="service-desc">Outbound that runs on a schedule, in your voice &mdash; without the agency invoice or the &ldquo;next week&rdquo; guilt.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT / BOOK A CONVERSATION -->
-<section class="contact-section" id="contact">
-  <div class="container">
-    <div class="contact-eyebrow">Thirty minutes. No deck. No pitch.</div>
-    <h2>Pick a time. Tell me what&rsquo;s <span class="accent">eating your week</span>.</h2>
-    <p class="contact-lead">
-      Choose any open slot below. You&rsquo;ll get a calendar invite and a confirmation email. We&rsquo;ll spend thirty minutes on the part of your operation that&rsquo;s draining your time &mdash; and whether it&rsquo;s worth automating.
+    <div class="section-eyebrow">Services</div>
+    <h2>Seven disciplines. One person. End to end.</h2>
+    <p class="section-lead">
+      Most engagements combine two or three of these. Some start with a fractional seat and grow into a full rebuild.
     </p>
 
-    <!-- Cal.com inline embed: william-pimentel-zbzwpx/30min · 24h + 1h reminders + no-show follow-up workflows configured -->
-    <div class="cal-embed-card">
-      <div id="my-cal-inline"></div>
-      <div class="cal-fallback">
-        Calendar not loading? <a href="mailto:william.p@tekomni.com?subject=Book%20a%2030-min%20call">Email me directly &rarr;</a>
+    <div class="svc-table">
+      <div class="svc-row">
+        <div class="svc-num mono">01</div>
+        <div class="svc-name">Custom Application Development</div>
+        <div class="svc-desc">Purpose-built systems that fit your workflow &mdash; not generic SaaS reshaped to your business.</div>
       </div>
-    </div>
-    <script type="text/javascript">
-      (function (C, A, L) {
-        let p = function (a, ar) { a.q.push(ar); };
-        let d = C.document;
-        C.Cal = C.Cal || function () {
-          let cal = C.Cal; let ar = arguments;
-          if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; }
-          if (ar[0] === L) {
-            const api = function () { p(api, arguments); };
-            const namespace = ar[1];
-            api.q = api.q || [];
-            if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); }
-            else p(cal, ar);
-            return;
-          }
-          p(cal, ar);
-        };
-      })(window, "https://app.cal.com/embed/embed.js", "init");
-
-      Cal("init", "30min", { origin: "https://cal.com" });
-
-      Cal.ns["30min"]("inline", {
-        elementOrSelector: "#my-cal-inline",
-        config: { layout: "month_view" },
-        calLink: "william-pimentel-zbzwpx/30min",
-      });
-
-      Cal.ns["30min"]("ui", {
-        theme: "light",
-        cssVarsPerTheme: {
-          light: { "cal-brand": "#0d9488" },
-          dark:  { "cal-brand": "#0d9488" }
-        },
-        hideEventTypeDetails: false,
-        layout: "month_view"
-      });
-    </script>
-
-    <div class="contact-meta">
-      <div class="contact-meta-item">
-        <span class="label">Or email</span>
-        <a href="mailto:william.p@tekomni.com" class="value">william.p@tekomni.com</a>
+      <div class="svc-row">
+        <div class="svc-num mono">02</div>
+        <div class="svc-name">Data Science &amp; AI Integration</div>
+        <div class="svc-desc">AI applied where it earns its keep &mdash; classification, prediction, voice, vision &mdash; not where it's a feature label.</div>
       </div>
-      <div class="contact-meta-item">
-        <span class="label">Phone</span>
-        <a href="tel:+15022308224" class="value">(502) 230-8224</a>
+      <div class="svc-row">
+        <div class="svc-num mono">03</div>
+        <div class="svc-name">Process Design &amp; Improvement</div>
+        <div class="svc-desc">Map the operation. Find the friction. Rebuild the flow. Then automate the rebuilt flow &mdash; in that order.</div>
       </div>
-      <div class="contact-meta-item">
-        <span class="label">Based in</span>
-        <span class="value">Louisville, KY &middot; works nationally</span>
+      <div class="svc-row">
+        <div class="svc-num mono">04</div>
+        <div class="svc-name">Continual Improvement Frameworks</div>
+        <div class="svc-desc">ITIL- and PRINCE2-aligned improvement programs that turn recurring incidents into resolved root causes, tighten SLA adherence, and elevate operational resilience. Same discipline that cut a bank service desk's backlog by 60%.</div>
+      </div>
+      <div class="svc-row">
+        <div class="svc-num mono">05</div>
+        <div class="svc-name">Managed IT</div>
+        <div class="svc-desc">Microsoft 365 (Exchange, Teams, SharePoint, OneDrive), Intune, Entra ID. Workstation vulnerability remediation and DLP frameworks that pass IRS and DOT/FMCSA scrutiny. Deployed, monitored, and kept current so IT stays invisible when it works and fast to fix when it breaks.</div>
+      </div>
+      <div class="svc-row">
+        <div class="svc-num mono">06</div>
+        <div class="svc-name">Fractional C-Suite Leadership</div>
+        <div class="svc-desc">CTO/COO-level technology and operations leadership for SMBs that need the seat at the table without the salary.</div>
+      </div>
+      <div class="svc-row">
+        <div class="svc-num mono">07</div>
+        <div class="svc-name">Marketing Strategy &amp; Execution</div>
+        <div class="svc-desc">Outbound that runs on a schedule, in your voice &mdash; without the agency invoice or the "next week" guilt.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="site-footer">
+<section class="section" id="about">
   <div class="container">
-    <div class="footer-left">
-      <div class="footer-logo">Tek<span class="accent">Omni</span> LLC</div>
-      <div class="footer-tag">Operations &middot; Automation &middot; Process Improvement for SMBs</div>
+    <div class="section-eyebrow">The operator</div>
+    <h2>18 years running mission-critical IT. Now building for you.</h2>
+
+    <div class="spine-grid">
+      <div class="spine-copy">
+        <p>I'm <strong>William Pimentel</strong>. By day I lead ITSM at Truist &mdash; a 160+ staff global Service Desk transformed through a major bank merger. Before that, five years of infrastructure leadership at Office Depot / CompuCom &mdash; 40+ staff, Fortune 500 SLAs, 15-minute MTTR on major incidents. Before that, PCI compliance remediation and self-service portal design at CompuCom.</p>
+        <p>Since 2019 I've been running <strong>TekOmni</strong> in parallel &mdash; as fractional CTO, director, and builder for SMB clients across finance, logistics, and engineering. That's where the enterprise discipline gets applied at SMB cost and speed. Microsoft 365 estates, Intune, Entra ID, DLP frameworks that pass IRS and DOT/FMCSA scrutiny &mdash; and custom AI systems that take the operation off the owner's plate. Bilingual EN/ES policies, SOPs, and driver-declaration forms when the workforce needs them.</p>
+        <p>The SMB owner's real objection isn't "can he build it?" &mdash; it's <strong>"can he run it when it breaks at 2 a.m.?"</strong> The answer is on my resume for the last decade.</p>
+
+        <div class="spine-certs">
+          <div class="label">// certifications</div>
+          <div class="certs">
+            <span class="cert-pill">MS AI Engineer</span>
+            <span class="cert-pill">ITIL</span>
+            <span class="cert-pill">OKTA Professional</span>
+            <span class="cert-pill">PRINCE2 Agile</span>
+            <span class="cert-pill">MSc CS · ISPJAM Cuba · 2002</span>
+            <span class="cert-pill">EN / ES bilingual</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <div class="tl-item current">
+          <div class="tl-date">2021 → PRESENT</div>
+          <div class="tl-role">ITSM Leader &mdash; Service Desk</div>
+          <div class="tl-company">Truist</div>
+          <div class="tl-body">Architected the transformation of a 160+ staff global Service Desk through the SunTrust/BB&amp;T merger. Cut backlog 60%. Built and grew the Team Automation &amp; AI practice &mdash; agentic models tackling repetitive tickets and complex incident correlation at bank scale. Architected workstation vulnerability remediation. Executive reporting in ServiceNow / Splunk.</div>
+        </div>
+        <div class="tl-item current">
+          <div class="tl-date">2019 → PRESENT</div>
+          <div class="tl-role">Founder / Fractional CTO</div>
+          <div class="tl-company">TekOmni Consulting</div>
+          <div class="tl-body">Custom automation and AI systems across finance, logistics, and engineering. GoFleetAI covers finance, logistics, maintenance, HR, and workflow automation for BLF Transportation. TheExpertAssistant covers voice-to-estimate plus IT infrastructure and project-management workflows for Copper Line Electric. Microsoft 365, Intune, Entra ID, and DLP frameworks (IRS + DOT/FMCSA-compliant) deployed across every client. Bilingual EN/ES policies, SOPs, and driver-declaration forms. ‑37% opex, ‑45% downtime at one logistics client.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">2016 → 2021</div>
+          <div class="tl-role">ITSM Leader &mdash; IT Infrastructure</div>
+          <div class="tl-company">Office Depot / CompuCom</div>
+          <div class="tl-body">40+ global staff across network, server, SaaS, storage, VDI. 15-min MTTR on major incidents. Stood up the observability environment that accelerated root-cause analysis. Service Support Catalogue integrated with Knowledge Management. Fortune 500 integration SOWs.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">2014 → 2016</div>
+          <div class="tl-role">IT Technical Lead / Sr. SysAdmin</div>
+          <div class="tl-company">CompuCom</div>
+          <div class="tl-body">Automated routine server tasks (‑30% manual workload). Designed self-service portal that dropped ticket volume. Architected PCI compliance remediation on Windows &amp; Unix.</div>
+        </div>
+      </div>
     </div>
-    <div class="footer-right">
-      <a href="mailto:william.p@tekomni.com">william.p@tekomni.com</a>
-      <span>&middot;</span>
-      <a href="privacy.html">Privacy</a>
-      <span>&middot;</span>
-      <a href="terms.html">Terms</a>
-      <span>&middot;</span>
-      <a href="sms-optin.html">SMS</a>
-      <span>&middot;</span>
-      <span>&copy; 2026 TekOmni LLC</span>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <div class="section-eyebrow">Book a call</div>
+      <h2>Thirty minutes. No deck. Tell me what's <span style="color:var(--amber)">eating your week</span>.</h2>
+      <p class="section-lead">
+        Pick any open slot below. Calendar invite lands automatically. We'll spend 30 minutes on the part of your operation that's draining time &mdash; and whether it's worth automating.
+      </p>
+
+      <div class="cal-embed-card">
+        <div id="my-cal-inline"></div>
+        <div class="cal-fallback">
+          &gt; Calendar not loading? <a href="mailto:william.p@tekomni.com?subject=Book%20a%2030-min%20call">email me directly →</a>
+        </div>
+      </div>
+
+      <script type="text/javascript">
+        (function (C, A, L) {
+          let p = function (a, ar) { a.q.push(ar); };
+          let d = C.document;
+          C.Cal = C.Cal || function () {
+            let cal = C.Cal; let ar = arguments;
+            if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; }
+            if (ar[0] === L) {
+              const api = function () { p(api, arguments); };
+              const namespace = ar[1];
+              api.q = api.q || [];
+              if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); }
+              else p(cal, ar);
+              return;
+            }
+            p(cal, ar);
+          };
+        })(window, "https://app.cal.com/embed/embed.js", "init");
+        Cal("init", "30min", { origin: "https://cal.com" });
+        Cal.ns["30min"]("inline", {
+          elementOrSelector: "#my-cal-inline",
+          config: { layout: "month_view" },
+          calLink: "william-pimentel-zbzwpx/30min",
+        });
+        Cal.ns["30min"]("ui", {
+          theme: "dark",
+          cssVarsPerTheme: {
+            light: { "cal-brand": "#2dd4bf" },
+            dark:  { "cal-brand": "#2dd4bf" }
+          },
+          hideEventTypeDetails: false,
+          layout: "month_view"
+        });
+      </script>
+
+      <div class="contact-meta">
+        <span><span class="label">email</span><a href="mailto:william.p@tekomni.com">william.p@tekomni.com</a></span>
+        <span><span class="label">phone</span><a href="tel:+15022308224">(502) 230-8224</a></span>
+        <span><span class="label">based</span>Louisville, KY</span>
+      </div>
     </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div>Tek<span class="accent">Omni</span> LLC &middot; Operations engineering for SMBs</div>
+    <div>&copy; 2026 &middot; <a href="privacy.html">privacy</a> &middot; <a href="terms.html">terms</a></div>
   </div>
 </footer>
 
