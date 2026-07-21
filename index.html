@@ -136,85 +136,6 @@
 
   /* ===== HERO ===== */
   .hero { padding: 7rem 0 5rem; position: relative; }
-  .hero-grid {
-    display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    gap: 4.5rem;
-    align-items: center;
-  }
-  .hero-visual { display: flex; justify-content: center; }
-
-  /* Brand card — the identity artefact */
-  .brand-card {
-    aspect-ratio: 1 / 1;
-    width: 100%;
-    max-width: 380px;
-    background: #0d9488;
-    border-radius: 22px;
-    padding: 2.5rem 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    box-shadow:
-      0 40px 80px -30px rgba(13,148,136,0.55),
-      0 0 0 1px rgba(255,255,255,0.06);
-  }
-  .brand-card::before {
-    content: "";
-    position: absolute;
-    width: 220%; height: 220%;
-    top: -70%; right: -70%;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 55%);
-    pointer-events: none;
-  }
-  .brand-card-wordmark {
-    font-family: 'Geist', sans-serif;
-    font-weight: 800;
-    font-size: clamp(2.6rem, 4.5vw, 3.4rem);
-    letter-spacing: -0.035em;
-    line-height: 1;
-    color: #ffffff;
-    margin-bottom: 1rem;
-    position: relative;
-    z-index: 1;
-  }
-  .brand-card-wordmark span { color: #fde68a; }
-  .brand-card-tagline {
-    font-family: 'Geist Mono', monospace;
-    font-weight: 500;
-    font-size: 0.78rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.9);
-    margin-bottom: 2.75rem;
-    position: relative;
-    z-index: 1;
-  }
-  .brand-card-bar {
-    width: 56px;
-    height: 3px;
-    background: #d97706;
-    border-radius: 2px;
-    margin-bottom: 0.9rem;
-    position: relative;
-    z-index: 1;
-  }
-  .brand-card-location {
-    font-family: 'Geist Mono', monospace;
-    font-weight: 500;
-    font-size: 0.7rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.75);
-    position: relative;
-    z-index: 1;
-  }
-
   .hero-eyebrow {
     font-family: 'Geist Mono', monospace;
     font-size: 0.75rem;
@@ -672,8 +593,6 @@
   /* Responsive */
   @media (max-width: 900px) {
     .nav-links { display: none; }
-    .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
-    .hero-visual { max-width: 340px; margin: 0 auto; }
     .kpi-grid { grid-template-columns: repeat(2, 1fr); }
     .kpi { border-right: none; border-bottom: 1px solid var(--line); }
     .kpi:nth-child(2n) { border-right: none; }
@@ -713,26 +632,14 @@
 
 <section class="hero">
   <div class="container">
-    <div class="hero-grid">
-      <div class="hero-content">
-        <div class="hero-eyebrow">Custom automation for SMB owners</div>
-        <h1>You didn't start this business to spend all your <span class="accent">evenings</span> on it.</h1>
-        <p class="hero-sub">
-          I build the automation that takes the operation off your plate &mdash; so the evenings, weekends, and white space come back. For your family. For the next venture. For whatever <span class="amber">"free"</span> means to you.
-        </p>
-        <div class="hero-cta">
-          <a href="#contact" class="btn btn-primary">Book a 30-min call <span class="arrow">→</span></a>
-          <a href="#work" class="btn btn-ghost">See production systems</a>
-        </div>
-      </div>
-      <div class="hero-visual">
-        <div class="brand-card">
-          <div class="brand-card-wordmark">Tek<span>Omni</span></div>
-          <div class="brand-card-tagline">Take back your time</div>
-          <div class="brand-card-bar"></div>
-          <div class="brand-card-location">Louisville, KY</div>
-        </div>
-      </div>
+    <div class="hero-eyebrow">Custom automation for SMB owners</div>
+    <h1>You didn't start this business to spend all your <span class="accent">evenings</span> on it.</h1>
+    <p class="hero-sub">
+      I build the automation that takes the operation off your plate &mdash; so the evenings, weekends, and white space come back. For your family. For the next venture. For whatever <span class="amber">"free"</span> means to you.
+    </p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-primary">Book a 30-min call <span class="arrow">→</span></a>
+      <a href="#work" class="btn btn-ghost">See production systems</a>
     </div>
   </div>
 </section>
