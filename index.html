@@ -314,6 +314,18 @@
     transition: border-color 0.2s ease, background 0.2s ease;
   }
   .case:hover { border-color: var(--line-strong); background: var(--bg-elev-2); }
+  .case .case-ext {
+    display: inline-block;
+    margin-left: 0.4em;
+    color: var(--ink-mute);
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.7em;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: color 0.2s ease;
+    vertical-align: 0.15em;
+  }
+  .case:hover .case-ext { color: var(--teal); }
   .case-header .case-index {
     font-family: 'Geist Mono', monospace;
     font-size: 0.72rem;
@@ -711,10 +723,10 @@
 
     <div class="case-grid">
 
-      <div class="case">
+      <a class="case" href="https://gofleetai.com" target="_blank" rel="noopener">
         <div class="case-header">
           <div class="case-index">CASE_01 &middot; TRUCKING</div>
-          <div class="case-product">GoFleetAI<span class="dot">.</span></div>
+          <div class="case-product">GoFleetAI<span class="dot">.</span><span class="case-ext">gofleetai.com ↗</span></div>
           <div class="case-domain">BLF Transportation &middot; 30 power units</div>
         </div>
         <div class="case-body">
@@ -725,12 +737,12 @@
           <div class="case-metric"><div class="label">2 a.m. calls</div><div class="value">Eliminated</div></div>
           <div class="case-metric"><div class="label">Bidding accuracy</div><div class="value">92% · +22% lanes · +12% margin</div></div>
         </div>
-      </div>
+      </a>
 
-      <div class="case">
+      <a class="case" href="https://theexpertassistant.com" target="_blank" rel="noopener">
         <div class="case-header">
           <div class="case-index">CASE_02 &middot; ELECTRICAL</div>
-          <div class="case-product">TheExpertAssistant<span class="dot">.</span></div>
+          <div class="case-product">TheExpertAssistant<span class="dot">.</span><span class="case-ext">theexpertassistant.com ↗</span></div>
           <div class="case-domain">Copper Line Electric &middot; commercial contractor</div>
         </div>
         <div class="case-body">
@@ -741,12 +753,12 @@
           <div class="case-metric"><div class="label">Sundays</div><div class="value">Reclaimed</div></div>
           <div class="case-metric"><div class="label">Close rate</div><div class="value">Higher · scope still fresh</div></div>
         </div>
-      </div>
+      </a>
 
-      <div class="case">
+      <a class="case" href="https://omnipost.tekomni.com" target="_blank" rel="noopener">
         <div class="case-header">
           <div class="case-index">CASE_03 &middot; SMB MARKETING</div>
-          <div class="case-product">OmniPost<span class="dot">.</span></div>
+          <div class="case-product">OmniPost<span class="dot">.</span><span class="case-ext">omnipost.tekomni.com ↗</span></div>
           <div class="case-domain">Multi-tenant social publishing</div>
         </div>
         <div class="case-body">
@@ -757,7 +769,7 @@
           <div class="case-metric"><div class="label">Agency invoice</div><div class="value">$2–5k/mo eliminated</div></div>
           <div class="case-metric"><div class="label">Channel cadence</div><div class="value">Never dark</div></div>
         </div>
-      </div>
+      </a>
 
     </div>
   </div>
